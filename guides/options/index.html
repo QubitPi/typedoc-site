@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Options | TypeDoc</title>
+    <meta
+        name="description"
+        property="og:description"
+        content=""
+    />
+    <meta
+        name="keywords"
+        content="TypeScript documentation generator javascript open source"
+    />
+    <meta property="og:title" content="Options" />
+    <meta property="og:url" content="/guides/options/" />
+    <meta property="og:site_name" content="TypeDoc Documentation Generator" />
+    <meta name="twitter:card" content="summary" />
+
+    <link rel="stylesheet" href="/css/main.css" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <script src="/scripts/toc.js" defer></script>
+    <script>
+        if (location.host === "typedoc.org" && location.protocol === "http:") {
+            location.protocol = "https:";
+        }
+    </script>
+</head>
+
+    <script>
+        document.documentElement.dataset.theme =
+            localStorage.getItem("tsd-theme") || "os";
+    </script>
+
+    <body>
+        <header>
+    <div class="container">
+        <a href="/" class="logo">TypeDoc</a>
+        <nav>
+            <ul>
+                <li><a href="/guides/overview/">Docs</a></li>
+                <li><a href="/example/">Example</a></li>
+                <li><a href="/api/">API</a></li>
+                <li>
+                    <a href="https://github.com/TypeStrong/typedoc">GitHub</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+
+        <section class="content" id="content">
+<div class="container main">
+    <div class="row">
+        <div class="navigation"><nav class="navigation">
+    <ul>
+        <li>
+            <a href="/guides/overview/">Overview</a>
+            <ul>
+                
+                <li>
+                    <a href="/guides/installation/" >Installation</a>
+                </li>
+                
+                <li>
+                    <a href="/guides/options/" class="current">Options</a>
+                </li>
+                
+                <li>
+                    <a href="/guides/doccomments/" >Doc Comments</a>
+                </li>
+                
+                <li>
+                    <a href="/guides/declaration-references/" >Declaration References</a>
+                </li>
+                
+                <li>
+                    <a href="/guides/project-references/" >Project References</a>
+                </li>
+                
+                <li>
+                    <a href="/guides/themes/" >Themes</a>
+                </li>
+                
+                <li>
+                    <a href="/guides/plugins/" >Plugins</a>
+                </li>
+                
+                <li>
+                    <a href="/guides/link-resolution/" >Link Resolution</a>
+                </li>
+                
+                <li>
+                    <a href="/guides/development/" >Development</a>
+                </li>
+                
+                <li>
+                    <a href="/guides/monorepo/" >Monorepo</a>
+                </li>
+                
+                <li>
+                    <a href="/guides/changelog/" >Changelog</a>
+                </li>
+                
+            </ul>
+        </li>
+
+        <li>
+            <a href="/guides/tags/">Tags</a>
+            <ul>
+                
+                <li>
+                    <a href="/tags/alpha/" >@alpha</a>
+                </li>
+                
+                <li>
+                    <a href="/tags/beta/" >@beta</a>
+                </li>
+                
+                <li>
+                    <a href="/tags/category/" >@category</a>
+                </li>
+                
+                <li>
+                    <a href="/tags/defaultValue/" >@defaultValue</a>
+                </li>
+                
+                <li>
+                    <a href="/tags/deprecated/" >@deprecated</a>
+                </li>
+                
+                <li>
+                    <a href="/tags/enum/" >@enum</a>
+                </li>
+                
+                <li>
+                    <a href="/tags/event/" >@event</a>
+                </li>
+                
+                <li>
+                    <a href="/tags/eventProperty/" >@eventProperty</a>
+                </li>
+                
+                <li>
+                    <a href="/tags/example/" >@example</a>
+                </li>
+                
+                <li>
+                    <a href="/tags/experimental/" >@experimental</a>
+                </li>
+                
+                <li>
+                    <a href="/tags/group/" >@group</a>
+                </li>
+                
+                <li>
+                    <a href="/tags/hidden/" >@hidden</a>
+                </li>
+                
+                <li>
+                    <a href="/tags/ignore/" >@ignore</a>
+                </li>
+                
+                <li>
+                    <a href="/tags/inheritDoc/" >{@inheritDoc}</a>
+                </li>
+                
+                <li>
+                    <a href="/tags/internal/" >@internal</a>
+                </li>
+                
+                <li>
+                    <a href="/tags/label/" >{@label}</a>
+                </li>
+                
+                <li>
+                    <a href="/tags/link/" >{@link}</a>
+                </li>
+                
+                <li>
+                    <a href="/tags/module/" >@module</a>
+                </li>
+                
+                <li>
+                    <a href="/tags/override/" >@override</a>
+                </li>
+                
+                <li>
+                    <a href="/tags/packageDocumentation/" >@packageDocumentation</a>
+                </li>
+                
+                <li>
+                    <a href="/tags/param/" >@param</a>
+                </li>
+                
+                <li>
+                    <a href="/tags/private/" >@private</a>
+                </li>
+                
+                <li>
+                    <a href="/tags/privateRemarks/" >@privateRemarks</a>
+                </li>
+                
+                <li>
+                    <a href="/tags/protected/" >@protected</a>
+                </li>
+                
+                <li>
+                    <a href="/tags/public/" >@public</a>
+                </li>
+                
+                <li>
+                    <a href="/tags/readonly/" >@readonly</a>
+                </li>
+                
+                <li>
+                    <a href="/tags/remarks/" >@remarks</a>
+                </li>
+                
+                <li>
+                    <a href="/tags/returns/" >@returns</a>
+                </li>
+                
+                <li>
+                    <a href="/tags/sealed/" >@sealed</a>
+                </li>
+                
+                <li>
+                    <a href="/tags/see/" >@see</a>
+                </li>
+                
+                <li>
+                    <a href="/tags/template/" >@template</a>
+                </li>
+                
+                <li>
+                    <a href="/tags/throws/" >@throws</a>
+                </li>
+                
+                <li>
+                    <a href="/tags/typeParam/" >@typeParam</a>
+                </li>
+                
+                <li>
+                    <a href="/tags/virtual/" >@virtual</a>
+                </li>
+                
+            </ul>
+        </li>
+    </ul>
+</nav>
+</div>
+        <div class="typography"><h1 id="options" tabindex="-1">Options</h1>
+<p>TypeDoc accepts most of the command line arguments that the TypeScript compiler accepts.
+All command line arguments that are passed in without a flag will be parsed as input files.
+Any options passed on the command line will override options set in a configuration file.</p>
+<pre class="language-bash"><code class="language-bash">$ typedoc <span class="token parameter variable">--out</span> path/to/documentation/ path/to/typescript/project/index.ts</code></pre>
+<h2 id="configuration-options" tabindex="-1">Configuration Options</h2>
+<p>These options control where TypeDoc reads its configuration from.</p>
+<h3 id="options-1" tabindex="-1">options</h3>
+<pre class="language-bash"><code class="language-bash">$ typedoc <span class="token parameter variable">--options</span> <span class="token operator">&lt;</span>filename<span class="token operator">></span></code></pre>
+<p>Specify a configuration file to be loaded, which should contain entries that correspond to command-line options/flags. If not specified, TypeDoc will look for a configuration file matching one of the valid config names in the current directory:</p>
+<ul>
+<li><code>typedoc.json</code></li>
+<li><code>typedoc.jsonc</code></li>
+<li><code>typedoc.config.js</code></li>
+<li><code>typedoc.config.cjs</code></li>
+<li><code>typedoc.js</code></li>
+<li><code>typedoc.cjs</code></li>
+<li><code>.config/typedoc.json</code></li>
+<li><code>.config/typedoc.jsonc</code></li>
+<li><code>.config/typedoc.config.js</code></li>
+<li><code>.config/typedoc.config.cjs</code></li>
+<li><code>.config/typedoc.js</code></li>
+<li><code>.config/typedoc.cjs</code></li>
+</ul>
+<h4 id="json-files" tabindex="-1">JSON Files</h4>
+<p>If you are using a JSON file, it should be an object whose keys are the option names. For example:</p>
+<pre class="language-json"><code class="language-json"><span class="token punctuation">{</span><br>    <span class="token property">"$schema"</span><span class="token operator">:</span> <span class="token string">"https://typedoc.org/schema.json"</span><span class="token punctuation">,</span><br>    <span class="token property">"entryPoints"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"./src/index.ts"</span><span class="token punctuation">,</span> <span class="token string">"./src/secondary-entry.ts"</span><span class="token punctuation">]</span><span class="token punctuation">,</span><br>    <span class="token property">"out"</span><span class="token operator">:</span> <span class="token string">"doc"</span><br><span class="token punctuation">}</span></code></pre>
+<p>Note that:</p>
+<ul>
+<li>It is recommended that you use a file name of <code>typedoc.json</code>.</li>
+<li>The <code>$schema</code> key is an optional property that will be ignored by TypeDoc, but will provide auto-complete and key validation when editing the file in VSCode and other editors which support JSON schemas.</li>
+<li>JSON files are parsed as JSONC, which means that you can safely use trailing commas and comments in your file.</li>
+</ul>
+<h4 id="javascript-files" tabindex="-1">JavaScript Files</h4>
+<p>If you are using a JavaScript file, it should export an object whose keys are the option names. For example:</p>
+<pre class="language-js"><code class="language-js"><span class="token comment">/** @type {import('typedoc').TypeDocOptions} */</span><br>module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span><br>    <span class="token literal-property property">entryPoints</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"./src/index.ts"</span><span class="token punctuation">,</span> <span class="token string">"./src/secondary-entry.ts"</span><span class="token punctuation">]</span><span class="token punctuation">,</span><br>    <span class="token literal-property property">out</span><span class="token operator">:</span> <span class="token string">"doc"</span><span class="token punctuation">,</span><br><span class="token punctuation">}</span></code></pre>
+<p>Note that:</p>
+<ul>
+<li>It is recommended that you use a file name of <code>typedoc.config.cjs</code>.</li>
+<li>The comment will be ignored by TypeDoc, but will provide auto-complete and key validation when editing the file in VSCode and other editors which support TypeScript JSDoc annotations.</li>
+</ul>
+<h4 id="other-info" tabindex="-1">Other Info</h4>
+<ul>
+<li>Option files may also contain an <code>extends</code> key, which specifies an additional file to be loaded before importing options from the current file. Paths will be resolved relative to the options file they are loaded from.</li>
+<li>If you have a relatively simple configuration, then you should use a JSON configuration file.</li>
+<li>If you have a complex configuration, then you should use a JavaScript configuration file. (For example, you might want to build the <code>entryPoints</code> array programmatically by parsing the project's &quot;index.ts&quot; file.)</li>
+</ul>
+<h3 id="tsconfig" tabindex="-1">tsconfig</h3>
+<pre class="language-bash"><code class="language-bash">$ typedoc <span class="token parameter variable">--tsconfig</span> <span class="token operator">&lt;</span>/path/to/tsconfig.json<span class="token operator">></span></code></pre>
+<p>Specify a <code>tsconfig.json</code> file that options should be read from. If not specified TypeDoc will look for <code>tsconfig.json</code> in the current directory and parent directories like <code>tsc</code> does.</p>
+<p>When TypeDoc loads a <code>tsconfig.json</code> file, it also will read TypeDoc options declared under the <code>typedocOptions</code> key and look for a <code>tsdoc.json</code> file in the same directory to read the supported tags.</p>
+<p>TypeDoc provides its default configuration for extension in <code>typedoc/tsdoc.json</code>. To add a custom block tag, try:</p>
+<pre class="language-json"><code class="language-json"><span class="token comment">// tsdoc.json</span><br><span class="token punctuation">{</span><br>    <span class="token property">"$schema"</span><span class="token operator">:</span> <span class="token string">"https://developer.microsoft.com/json-schemas/tsdoc/v0/tsdoc.schema.json"</span><span class="token punctuation">,</span><br>    <span class="token property">"extends"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"typedoc/tsdoc.json"</span><span class="token punctuation">]</span><span class="token punctuation">,</span><br>    <span class="token property">"tagDefinitions"</span><span class="token operator">:</span> <span class="token punctuation">[</span><br>        <span class="token punctuation">{</span><br>            <span class="token property">"tagName"</span><span class="token operator">:</span> <span class="token string">"@myCustomTag"</span><span class="token punctuation">,</span><br>            <span class="token property">"syntaxKind"</span><span class="token operator">:</span> <span class="token string">"block"</span><br>        <span class="token punctuation">}</span><br>    <span class="token punctuation">]</span><br><span class="token punctuation">}</span></code></pre>
+<h3 id="compileroptions" tabindex="-1">compilerOptions</h3>
+<p>Used to selectively override compiler options for generating documentation. Values set with this option
+will override options read from <code>tsconfig.json</code>.</p>
+<pre class="language-json"><code class="language-json"><span class="token punctuation">{</span><br>    <span class="token property">"compilerOptions"</span><span class="token operator">:</span> <span class="token punctuation">{</span><br>        <span class="token property">"strictNullChecks"</span><span class="token operator">:</span> <span class="token boolean">false</span><br>    <span class="token punctuation">}</span><br><span class="token punctuation">}</span></code></pre>
+<h2 id="input-options" tabindex="-1">Input Options</h2>
+<p>These options control what files TypeDoc processes to generate documentation and how the files are processed.</p>
+<h3 id="entrypoints" tabindex="-1">entryPoints</h3>
+<pre class="language-bash"><code class="language-bash">$ typedoc a b<br><span class="token comment"># or</span><br>$ typedoc <span class="token parameter variable">--entryPoints</span> a <span class="token parameter variable">--entryPoints</span> b</code></pre>
+<p>Specifies the entry points to be documented by TypeDoc. TypeDoc will examine the exports of these files and create documentation according to the exports.
+Entry points can be handled in one of three ways, see <a href="#entrypointstrategy"><code>--entryPointStrategy</code></a> for details.</p>
+<h3 id="entrypointstrategy" tabindex="-1">entryPointStrategy</h3>
+<pre class="language-bash"><code class="language-bash">$ typedoc <span class="token parameter variable">--entryPointStrategy</span> <span class="token function">expand</span> ./src</code></pre>
+<p>There are three possible options:</p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Behavior</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>resolve (default)</td>
+<td>Expects all entry points to be contained within the root level tsconfig project. If a directory is given, includes <code>&lt;directory&gt;/index</code> as the entry point.</td>
+</tr>
+<tr>
+<td>expand</td>
+<td>Expects all entry points to be contained within the root level tsconfig project. If a directory is given, files within it are recursively expanded. Effectively, this will make a separate page for each individual TypeScript file. (This was the default behavior in v0.21.)</td>
+</tr>
+<tr>
+<td>packages</td>
+<td>If your codebase is comprised of one or more npm packages, you can pass the paths to these packages and TypeDoc will attempt to determine entry points based on <code>package.json</code>'s <code>main</code> property (with default value <code>index.js</code>) and if it wasn't found, based on <code>types</code> property. If any of the packages given are the root of an <a href="https://docs.npmjs.com/cli/v7/using-npm/workspaces">npm Workspace</a> or a <a href="https://classic.yarnpkg.com/en/docs/workspaces/">Yarn Workspace</a> TypeDoc will find all the <code>workspaces</code> defined in the <code>package.json</code>. This mode requires sourcemaps in your JS entry points or that you specify the TypeDoc entry point in your package.json to tell TypeDoc where your entry point TypeScript source. Supports wildcard paths in the same fashion as those found in npm or Yarn workspaces. Find more details in <a href="/guides/monorepo">monorepo</a> guide</td>
+</tr>
+</tbody>
+</table>
+<h3 id="exclude" tabindex="-1">exclude</h3>
+<pre class="language-bash"><code class="language-bash">$ typedoc <span class="token parameter variable">--exclude</span> <span class="token string">"**/*+(index|.spec|.e2e).ts"</span></code></pre>
+<p>Exclude files by the given pattern when a path is provided as source. This option is only used to remove files from consideration as
+entry points. Unlike TypeScript's <code>exclude</code> option, it <em>cannot</em> be used to exclude files from compilation. You may want to turn on TypeScript's
+<a href="https://www.typescriptlang.org/tsconfig#skipLibCheck">--skipLibCheck</a> if you have compilation errors originating in <code>@types</code> packages.</p>
+<p>Supports <a href="https://github.com/isaacs/minimatch">minimatch</a> patterns.
+In configuration files, this option accepts an array of patterns. On the command line, it may be specified multiple times to add multiple patterns.
+If an exported member from one of your entry points is located in an excluded file, it will be excluded from the documentation.</p>
+<p>If <code>entryPointStrategy</code> is set to `packages, then you can specify package directories with this option to exclude from documentation.</p>
+<h3 id="externalpattern" tabindex="-1">externalPattern</h3>
+<pre class="language-bash"><code class="language-bash">$ typedoc <span class="token parameter variable">--externalPattern</span> <span class="token string">'lib/**/*.ts'</span> <span class="token parameter variable">--externalPattern</span> <span class="token string">'external/**/*.ts'</span></code></pre>
+<p>Define patterns for extra files that should be considered external. Can be used along with <code>--excludeExternals</code> to remove external modules from the documentation.</p>
+<h3 id="excludeexternals" tabindex="-1">excludeExternals</h3>
+<pre class="language-bash"><code class="language-bash">$ typedoc <span class="token parameter variable">--excludeExternals</span></code></pre>
+<p>Prevent externally resolved TypeScript files from being documented. Defaults to false.</p>
+<h3 id="excludenotdocumented" tabindex="-1">excludeNotDocumented</h3>
+<pre class="language-bash"><code class="language-bash">$ typedoc <span class="token parameter variable">--excludeNotDocumented</span></code></pre>
+<p>Removes symbols from the generated documentation which do not have an associated doc comment if they are matched by <code>excludeNotDocumentedKinds</code>.</p>
+<h3 id="excludenotdocumentedkinds" tabindex="-1">excludeNotDocumentedKinds</h3>
+<pre class="language-json"><code class="language-json"><span class="token comment">// typedoc.json</span><br><span class="token punctuation">{</span><br>    <span class="token property">"excludeNotDocumented"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span><br>    <span class="token property">"excludeNotDocumentedKinds"</span><span class="token operator">:</span> <span class="token punctuation">[</span><br>        <span class="token string">"Property"</span><span class="token punctuation">,</span><br>        <span class="token string">"Interface"</span><span class="token punctuation">,</span><br>        <span class="token string">"TypeAlias"</span><span class="token punctuation">,</span><br>    <span class="token punctuation">]</span><br><span class="token punctuation">}</span></code></pre>
+<p>Specifies the kinds of member which can be removed by <code>excludeNotDocumented</code>. Defaults to:</p>
+<pre class="language-json"><code class="language-json"><span class="token punctuation">{</span><br>    <span class="token property">"excludeNotDocumentedKinds"</span><span class="token operator">:</span> <span class="token punctuation">[</span><br>        <span class="token string">"Module"</span><span class="token punctuation">,</span><br>        <span class="token string">"Namespace"</span><span class="token punctuation">,</span><br>        <span class="token string">"Enum"</span><span class="token punctuation">,</span><br>        <span class="token comment">// "EnumMember", // Not enabled by default</span><br>        <span class="token string">"Variable"</span><span class="token punctuation">,</span><br>        <span class="token string">"Function"</span><span class="token punctuation">,</span><br>        <span class="token string">"Class"</span><span class="token punctuation">,</span><br>        <span class="token string">"Interface"</span><span class="token punctuation">,</span><br>        <span class="token string">"Constructor"</span><span class="token punctuation">,</span><br>        <span class="token string">"Property"</span><span class="token punctuation">,</span><br>        <span class="token string">"Method"</span><span class="token punctuation">,</span><br>        <span class="token string">"CallSignature"</span><span class="token punctuation">,</span><br>        <span class="token string">"IndexSignature"</span><span class="token punctuation">,</span><br>        <span class="token string">"ConstructorSignature"</span><span class="token punctuation">,</span><br>        <span class="token string">"Accessor"</span><span class="token punctuation">,</span><br>        <span class="token string">"GetSignature"</span><span class="token punctuation">,</span><br>        <span class="token string">"SetSignature"</span><span class="token punctuation">,</span><br>        <span class="token string">"TypeAlias"</span><span class="token punctuation">,</span><br>        <span class="token string">"Reference"</span><span class="token punctuation">,</span><br>    <span class="token punctuation">]</span><br><span class="token punctuation">}</span></code></pre>
+<h3 id="excludeinternal" tabindex="-1">excludeInternal</h3>
+<pre class="language-bash"><code class="language-bash">$ typedoc <span class="token parameter variable">--excludeInternal</span></code></pre>
+<p>Removes symbols annotated with the <code>@internal</code> doc tag. Defaults to true if the stripInternal compiler option is set to true, otherwise defaults to false.</p>
+<h3 id="excludeprivate" tabindex="-1">excludePrivate</h3>
+<pre class="language-bash"><code class="language-bash">$ typedoc <span class="token parameter variable">--excludePrivate</span></code></pre>
+<p>Removes private class members from the generated documentation. Defaults to false.</p>
+<h3 id="excludeprotected" tabindex="-1">excludeProtected</h3>
+<pre class="language-bash"><code class="language-bash">$ typedoc <span class="token parameter variable">--excludeProtected</span></code></pre>
+<p>Removes protected class members from the generated documentation. Defaults to false.</p>
+<h3 id="externalsymbollinkmappings" tabindex="-1">externalSymbolLinkMappings</h3>
+<pre class="language-json"><code class="language-json"><span class="token comment">// typedoc.json</span><br><span class="token punctuation">{</span><br>    <span class="token property">"externalSymbolLinkMappings"</span><span class="token operator">:</span> <span class="token punctuation">{</span><br>        <span class="token comment">// {@link typescript!Partial} will use this link as well as</span><br>        <span class="token comment">// type Foo = Partial&lt;Bar></span><br>        <span class="token property">"typescript"</span><span class="token operator">:</span> <span class="token punctuation">{</span><br>            <span class="token property">"Partial"</span><span class="token operator">:</span> <span class="token string">"https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype"</span><br>        <span class="token punctuation">}</span><br>    <span class="token punctuation">}</span><br><span class="token punctuation">}</span></code></pre>
+<p>Can be used to specify locations of externally defined types. If the external library uses namespaces,
+qualify the name with <code>.</code> as a separator. These definitions will be used for both types linked to by
+the user via a <code>{@link}</code> tag and in code.</p>
+<p>TypeDoc assumes that if a symbol was referenced from a package, it was exported from that package.
+This will be true for most native TypeScript packages, but packages which rely on <code>@types</code> will be linked
+according to the <code>@types</code> package, not the original module name. If both are intended to be supported,
+both packages must be listed.</p>
+<pre class="language-json"><code class="language-json"><span class="token comment">// typedoc.json</span><br><span class="token punctuation">{</span><br>    <span class="token property">"externalSymbolLinkMappings"</span><span class="token operator">:</span> <span class="token punctuation">{</span><br>        <span class="token comment">// used by `class Foo extends Component {}`</span><br>        <span class="token property">"@types/react"</span><span class="token operator">:</span> <span class="token punctuation">{</span><br>            <span class="token property">"Component"</span><span class="token operator">:</span> <span class="token string">"https://reactjs.org/docs/react-component.html"</span><br>        <span class="token punctuation">}</span><span class="token punctuation">,</span><br>        <span class="token comment">// used by {@link react!Component}</span><br>        <span class="token property">"react"</span><span class="token operator">:</span> <span class="token punctuation">{</span><br>            <span class="token property">"Component"</span><span class="token operator">:</span> <span class="token string">"https://reactjs.org/docs/react-component.html"</span><br>        <span class="token punctuation">}</span><br>    <span class="token punctuation">}</span><br><span class="token punctuation">}</span></code></pre>
+<p>Global external types are supported, but may have surprising behavior. Types which are defined in the TypeScript
+lib files (including <code>Array</code>, <code>Promise</code>, ...) will be detected as belonging to the <code>typescript</code> package rather than
+the special <code>global</code> package reserved for global types.</p>
+<pre class="language-json"><code class="language-json"><span class="token comment">// typedoc.json</span><br><span class="token punctuation">{</span><br>    <span class="token property">"externalSymbolLinkMappings"</span><span class="token operator">:</span> <span class="token punctuation">{</span><br>        <span class="token comment">// used by {@link !Promise}</span><br>        <span class="token property">"global"</span><span class="token operator">:</span> <span class="token punctuation">{</span><br>            <span class="token property">"Promise"</span><span class="token operator">:</span> <span class="token string">"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise"</span><br>        <span class="token punctuation">}</span><span class="token punctuation">,</span><br>        <span class="token comment">// used by type Foo = Promise&lt;string></span><br>        <span class="token property">"typescript"</span><span class="token operator">:</span> <span class="token punctuation">{</span><br>            <span class="token property">"Promise"</span><span class="token operator">:</span> <span class="token string">"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise"</span><br>        <span class="token punctuation">}</span><br>    <span class="token punctuation">}</span><br><span class="token punctuation">}</span></code></pre>
+<h3 id="media" tabindex="-1">media</h3>
+<pre class="language-bash"><code class="language-bash">$ typedoc <span class="token parameter variable">--media</span> <span class="token operator">&lt;</span>path/to/media/<span class="token operator">></span></code></pre>
+<p>Specifies a media directory that will be copied to the output file. Media can be linked to with <code>media://file.jpg</code> in doc comments.</p>
+<h3 id="includes" tabindex="-1">includes</h3>
+<pre class="language-bash"><code class="language-bash">$ typedoc <span class="token parameter variable">--includes</span> <span class="token operator">&lt;</span>path/to/includes/<span class="token operator">></span></code></pre>
+<p>Specifies a directory with files that can be injected into the generated documentation with <code>[[include:file.md]]</code> in a doc comment.</p>
+<h2 id="output-options" tabindex="-1">Output Options</h2>
+<p>These options control TypeDoc's output.</p>
+<h3 id="out" tabindex="-1">out</h3>
+<pre class="language-bash"><code class="language-bash">$ typedoc <span class="token parameter variable">--out</span> <span class="token operator">&lt;</span>path/to/documentation/<span class="token operator">></span></code></pre>
+<p>Specifies the location the html documentation should be written to.
+The HTML output produced by running TypeDoc on itself can be seen at <a href="/api">/api</a>.</p>
+<h3 id="json" tabindex="-1">json</h3>
+<pre class="language-bash"><code class="language-bash">$ typedoc <span class="token parameter variable">--json</span> <span class="token operator">&lt;</span>path/to/out-file.json<span class="token operator">></span></code></pre>
+<p>Specifies the location to output a JSON file containing all of the reflection data.
+An example of the JSON output from running TypeDoc on itself can be seen at <a href="/api/docs.json">/api/docs.json</a>.</p>
+<h3 id="pretty" tabindex="-1">pretty</h3>
+<pre class="language-bash"><code class="language-bash">$ typedoc <span class="token parameter variable">--json</span> out.json <span class="token parameter variable">--pretty</span></code></pre>
+<p>Tells TypeDoc to pretty-format the JSON output. Defaults to true.</p>
+<h3 id="emit" tabindex="-1">emit</h3>
+<pre class="language-bash"><code class="language-bash">$ typedoc <span class="token parameter variable">--emit</span> none</code></pre>
+<p>Instructs TypeDoc to write compiled output files as <code>tsc</code> does.</p>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Behavior</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>docs</code></td>
+<td>Emit documentation, but not JS (default).</td>
+</tr>
+<tr>
+<td><code>both</code></td>
+<td>Emit both documentation and JS.</td>
+</tr>
+<tr>
+<td><code>none</code></td>
+<td>Emit nothing, just convert and run validation.</td>
+</tr>
+</tbody>
+</table>
+<p><em><strong>Note:</strong> If you have your TypeScript configured with <code>declaration: true</code> (through <code>tsconfig.json</code>), the Typedoc emit <code>both</code> option will also generate type declaration files. This is because Typedoc falls back to TypeScript to generate the JS, this allows us to set the normal TypeScript options for type declarations and have Typedoc handle generating the <code>docs</code>, <code>js</code>, and <code>types</code> for us, all at once.</em></p>
+<h3 id="theme" tabindex="-1">theme</h3>
+<pre class="language-bash"><code class="language-bash">$ typedoc <span class="token parameter variable">--theme</span> default</code></pre>
+<p>Specify the theme name that should be used. TypeDoc 0.22 contains architectural changes which breaks themes developed for TypeDoc 0.21 and earlier.</p>
+<h3 id="lighthighlighttheme-%2F-darkhighlighttheme" tabindex="-1">lightHighlightTheme / darkHighlightTheme</h3>
+<pre class="language-bash"><code class="language-bash">$ typedoc <span class="token parameter variable">--darkHighlightTheme</span> dark-plus</code></pre>
+<p>Specify the Shiki theme to be used to highlight code snippets in light/dark mode.</p>
+<h3 id="customcss" tabindex="-1">customCss</h3>
+<pre class="language-bash"><code class="language-bash">$ typedoc <span class="token parameter variable">--customCss</span> ./theme/style.css</code></pre>
+<p>Specifies an extra CSS file that should be copied into the assets directory and referenced by the theme.</p>
+<h3 id="markedoptions" tabindex="-1">markedOptions</h3>
+<p>Specifies the options that are forwarded to <a href="https://marked.js.org">Marked</a> when parsing doc comments.
+By default TypeDoc overrides the default values used by Marked with the ones shown below:</p>
+<pre class="language-json"><code class="language-json"><span class="token punctuation">{</span><br>    <span class="token property">"markedOptions"</span><span class="token operator">:</span> <span class="token punctuation">{</span><br>        <span class="token property">"mangle"</span><span class="token operator">:</span> <span class="token boolean">false</span><br>    <span class="token punctuation">}</span><br><span class="token punctuation">}</span></code></pre>
+<p>See the <a href="https://marked.js.org/using_advanced#options">options section</a> on the Marked site for a full list of available options.</p>
+<h3 id="name" tabindex="-1">name</h3>
+<pre class="language-bash"><code class="language-bash">$ typedoc <span class="token parameter variable">--name</span> <span class="token operator">&lt;</span>Documentation title<span class="token operator">></span></code></pre>
+<p>Set the name of the project that will be used in the header of the template.
+The name defaults to the package name and current version according to your package.json.</p>
+<h3 id="includeversion" tabindex="-1">includeVersion</h3>
+<pre class="language-bash"><code class="language-bash">$ typedoc <span class="token parameter variable">--name</span> <span class="token string">"Name"</span> <span class="token parameter variable">--includeVersion</span></code></pre>
+<p>Adds the package version to the project's name.
+In this case, if the project was on version 1.2.3 according to <code>package.json</code>, this would generate documentation called &quot;Name - v1.2.3&quot;</p>
+<h3 id="disablesources" tabindex="-1">disableSources</h3>
+<pre class="language-bash"><code class="language-bash">$ typedoc <span class="token parameter variable">--disableSources</span></code></pre>
+<p>Disables the defined in text describing where a reflection was created.</p>
+<h3 id="basepath" tabindex="-1">basePath</h3>
+<pre class="language-bash"><code class="language-bash">$ typedoc <span class="token parameter variable">--basePath</span> ./ <span class="token parameter variable">--entryPoints</span> src/index.ts</code></pre>
+<p>Specifies the base path to be used when displaying file paths. If not set, TypeDoc will guess by taking the lowest
+common directory to all source files. In the above example, TypeDoc would display links to <code>index.ts</code> rather than <code>src/index.ts</code>.</p>
+<p>Note: This option only affects displayed paths. It <em>does not</em> affect where TypeDoc will create links to.</p>
+<h3 id="excludetags" tabindex="-1">excludeTags</h3>
+<pre class="language-bash"><code class="language-bash">$ typedoc <span class="token parameter variable">--excludeTags</span> apidefine</code></pre>
+<p>Specify tags that should be removed from doc comments when parsing.
+Useful if your project uses <a href="https://apidocjs.com/">apiDoc</a> for documenting RESTful web APIs.</p>
+<h3 id="readme" tabindex="-1">readme</h3>
+<pre class="language-bash"><code class="language-bash">$ typedoc <span class="token parameter variable">--readme</span> <span class="token operator">&lt;</span>path/to/readme<span class="token operator">|</span>none<span class="token operator">></span></code></pre>
+<p>Path to the readme file that should be displayed on the index page. Pass none to disable the index page and start the documentation on the globals page.</p>
+<h3 id="cname" tabindex="-1">cname</h3>
+<pre class="language-bash"><code class="language-bash">$ typedoc <span class="token parameter variable">--cname</span> typedoc.org</code></pre>
+<p>Create a CNAME file in the output directory with the specified text.</p>
+<h3 id="sourcelinktemplate" tabindex="-1">sourceLinkTemplate</h3>
+<pre class="language-bash"><code class="language-bash">$ typedoc <span class="token parameter variable">--sourceLinkTemplate</span> <span class="token string">'https://vcs.example.com/{path}?at={gitRevision}#line={line}'</span></code></pre>
+<p>Specify a link template to be used when generating source urls. If not set, will be automatically created
+using the git remote for GitHub, GitLab, and BitBucket urls. Supports <code>{path}</code>, <code>{line}</code>, and <code>{gitRevision}</code>
+placeholders.</p>
+<h3 id="gitrevision" tabindex="-1">gitRevision</h3>
+<pre class="language-bash"><code class="language-bash">$ typedoc <span class="token parameter variable">--gitRevision</span> <span class="token operator">&lt;</span>revision<span class="token operator">|</span>branch<span class="token operator">></span></code></pre>
+<p>Use specified revision or branch instead of the last revision for linking to source files. Defaults to the last commit.</p>
+<h3 id="gitremote" tabindex="-1">gitRemote</h3>
+<pre class="language-bash"><code class="language-bash">$ typedoc <span class="token parameter variable">--gitRemote</span> <span class="token operator">&lt;</span>remote<span class="token operator">></span></code></pre>
+<p>Use the specified git remote instead of <code>origin</code> for linking to source files in GitHub, Bitbucket, or GitLab.
+You can use <code>git remote</code> to view a list of valid remotes.
+If you are updating documentation for a forked package, you probably want to pass <code>--gitRemote upstream</code>.</p>
+<p>(Deprecated, will be removed in 0.24) This may be set to a URL (staring with <code>http://</code> or <code>https://</code>), in which case TypeDoc will assume that it is
+the base URL for links. Links will be created to <code>{gitRemote}/{gitRevision}/{filePath}</code>.</p>
+<h3 id="htmllang" tabindex="-1">htmlLang</h3>
+<pre class="language-bash"><code class="language-bash">$ typedoc <span class="token parameter variable">--htmlLang</span> es</code></pre>
+<p>Sets the <code>lang</code> attribute in TypeDoc's HTML output, defaults to <code>en</code>, resulting in <code>&lt;html lang=&quot;en&quot;&gt;</code>.</p>
+<h3 id="githubpages" tabindex="-1">githubPages</h3>
+<pre class="language-bash"><code class="language-bash">$ typedoc <span class="token parameter variable">--githubPages</span> <span class="token boolean">false</span></code></pre>
+<p>When enabled, automatically add a <code>.nojekyll</code> file to the output directory to prevent GitHub Pages
+from processing your documentation site using Jekyll. If you have scoped packages, TypeDoc
+generates HTML files that start with <code>_</code> which are ignored by Jekyll. Defaults to <code>true</code>.</p>
+<h3 id="gaid" tabindex="-1">gaID</h3>
+<pre class="language-bash"><code class="language-bash">$ typedoc <span class="token parameter variable">--gaID</span></code></pre>
+<p>Set the Google Analytics tracking ID and activate tracking code.</p>
+<h3 id="hidegenerator" tabindex="-1">hideGenerator</h3>
+<pre class="language-bash"><code class="language-bash">$ typedoc <span class="token parameter variable">--hideGenerator</span></code></pre>
+<p>Do not print the TypeDoc link at the end of the page. Defaults to false.</p>
+<h3 id="searchincomments" tabindex="-1">searchInComments</h3>
+<pre class="language-bash"><code class="language-bash">$ typedoc <span class="token parameter variable">--searchInComments</span></code></pre>
+<p>Enables searching comment text in the generated documentation site.</p>
+<p>Note: Enabling this option will increase the size of your search index, potentially up
+to an order of magnitude larger in projects with many long comments.</p>
+<h3 id="cleanoutputdir" tabindex="-1">cleanOutputDir</h3>
+<pre class="language-bash"><code class="language-bash">$ typedoc <span class="token parameter variable">--cleanOutputDir</span> <span class="token boolean">false</span></code></pre>
+<p>Can be used to prevent TypeDoc from cleaning the output directory specified with <code>--out</code>.</p>
+<h3 id="titlelink" tabindex="-1">titleLink</h3>
+<pre class="language-bash"><code class="language-bash">$ typedoc <span class="token parameter variable">--titleLink</span> <span class="token string">"http://example.com"</span></code></pre>
+<p>Sets the link the title in the header points to. Defaults to the documentation homepage.</p>
+<h3 id="navigationlinks" tabindex="-1">navigationLinks</h3>
+<pre class="language-json"><code class="language-json"><span class="token comment">// typedoc.json</span><br><span class="token punctuation">{</span><br>    <span class="token property">"navigationLinks"</span><span class="token operator">:</span> <span class="token punctuation">{</span><br>        <span class="token property">"Example"</span><span class="token operator">:</span> <span class="token string">"http://example.com"</span><br>    <span class="token punctuation">}</span><br><span class="token punctuation">}</span></code></pre>
+<p>Defines additional links to be included in the page header.</p>
+<h3 id="sidebarlinks" tabindex="-1">sidebarLinks</h3>
+<pre class="language-json"><code class="language-json"><span class="token comment">// typedoc.json</span><br><span class="token punctuation">{</span><br>    <span class="token property">"sidebarLinks"</span><span class="token operator">:</span> <span class="token punctuation">{</span><br>        <span class="token property">"Example"</span><span class="token operator">:</span> <span class="token string">"http://example.com"</span><br>    <span class="token punctuation">}</span><br><span class="token punctuation">}</span></code></pre>
+<p>Defines additional links to be included in the page sidebar.</p>
+<h2 id="comment-options" tabindex="-1">Comment Options</h2>
+<h3 id="commentstyle" tabindex="-1">commentStyle</h3>
+<pre class="language-bash"><code class="language-bash">$ typedoc <span class="token parameter variable">--commentStyle</span> block</code></pre>
+<p>Determines what comment types TypeDoc will use. Note: Writing non-JSDoc comments will cause poorer
+intellisense in VSCode and is therefore generally not recommended.</p>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Behavior</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>jsdoc (default)</td>
+<td>Use block comments starting with <code>/**</code></td>
+</tr>
+<tr>
+<td>block</td>
+<td>Use all block comments</td>
+</tr>
+<tr>
+<td>line</td>
+<td>Use <code>//</code> comments</td>
+</tr>
+<tr>
+<td>all</td>
+<td>Use both block and line comments</td>
+</tr>
+</tbody>
+</table>
+<h3 id="blocktags" tabindex="-1">blockTags</h3>
+<pre class="language-json"><code class="language-json"><span class="token comment">// typedoc.json</span><br><span class="token punctuation">{</span><br>    <span class="token property">"blockTags"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"@param"</span><span class="token punctuation">,</span> <span class="token string">"@returns"</span><span class="token punctuation">]</span><br><span class="token punctuation">}</span></code></pre>
+<p>Override TypeDoc's supported block tags, emit warnings for any tags not listed here.
+This option will be set by <code>tsdoc.json</code> if present.</p>
+<h3 id="inlinetags" tabindex="-1">inlineTags</h3>
+<pre class="language-json"><code class="language-json"><span class="token comment">// typedoc.json</span><br><span class="token punctuation">{</span><br>    <span class="token property">"inlineTags"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"@link"</span><span class="token punctuation">]</span><br><span class="token punctuation">}</span></code></pre>
+<p>Override TypeDoc's supported inline tags, emit warnings for any tags not listed here.
+This option will be set by <code>tsdoc.json</code> if present.</p>
+<h3 id="modifiertags" tabindex="-1">modifierTags</h3>
+<pre class="language-json"><code class="language-json"><span class="token comment">// typedoc.json</span><br><span class="token punctuation">{</span><br>    <span class="token property">"modifierTags"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"@hidden"</span><span class="token punctuation">,</span> <span class="token string">"@packageDocumentation"</span><span class="token punctuation">]</span><br><span class="token punctuation">}</span></code></pre>
+<p>Override TypeDoc's supported modifier tags, emit warnings for any tags not listed here.
+This option will be set by <code>tsdoc.json</code> if present.</p>
+<h2 id="organization-options" tabindex="-1">Organization Options</h2>
+<h3 id="categorizebygroup" tabindex="-1">categorizeByGroup</h3>
+<pre class="language-bash"><code class="language-bash">$ typedoc <span class="token parameter variable">--categorizeByGroup</span> <span class="token boolean">false</span></code></pre>
+<p>This flag categorizes reflections by group (within properties, methods, etc).
+To allow methods and properties of the same category to be grouped together, set this flag to false.
+Defaults to true.</p>
+<h3 id="defaultcategory" tabindex="-1">defaultCategory</h3>
+<pre class="language-bash"><code class="language-bash">$ typedoc <span class="token parameter variable">--defaultCategory</span> <span class="token string">"Category Name"</span></code></pre>
+<p>Sets the name for the default category which is used when only some elements of the page are categorized.
+Defaults to 'Other'</p>
+<h3 id="categoryorder" tabindex="-1">categoryOrder</h3>
+<pre class="language-json"><code class="language-json"><span class="token comment">// typedoc.json</span><br><span class="token punctuation">{</span><br>    <span class="token property">"categoryOrder"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"Category Name"</span><span class="token punctuation">,</span> <span class="token string">"Other Category"</span><span class="token punctuation">,</span> <span class="token string">"*"</span><span class="token punctuation">]</span><br><span class="token punctuation">}</span></code></pre>
+<p>Array option which allows overriding the order categories display in. A string of <code>*</code> indicates where categories that are not in the list should appear.</p>
+<p>By default, categories are displayed alphabetically. If unknown categories are found, they will be listed at the end by default.</p>
+<h3 id="sort" tabindex="-1">sort</h3>
+<pre class="language-bash"><code class="language-bash">$ typedoc <span class="token parameter variable">--sort</span> static-first <span class="token parameter variable">--sort</span> alphabetical</code></pre>
+<p>Specifies the sort order for members. Sorting strategies will be applied in order.
+If an earlier sorting strategy determines the relative ordering of two reflections, later
+ordering strategies will not be applied.</p>
+<p>For example, with the setting <code>[&quot;static-first&quot;, &quot;visibility&quot;]</code>, TypeDoc will first compare two
+reflections by if they are static or not, and if that comparison returns equal, will check the
+visibility of each reflection. On the other hand, if <code>[&quot;visibility&quot;, &quot;static-first&quot;]</code> is specified,
+TypeDoc would sort all public properties first and then sort each group to put static properties first.
+This means that <code>[&quot;source-order&quot;, &quot;static-first&quot;]</code> is equivalent to <code>[&quot;source-order&quot;]</code> since ordering
+by position in source will always produce a non-equal comparison.</p>
+<p>The available sorting strategies are:</p>
+<ul>
+<li><code>source-order</code> (sorts by file, then by position in file)</li>
+<li><code>alphabetical</code></li>
+<li><code>enum-value-ascending</code> (only applies to children of an enum)</li>
+<li><code>enum-value-descending</code> (only applies to children of an enum)</li>
+<li><code>static-first</code></li>
+<li><code>instance-first</code></li>
+<li><code>visibility</code> (public, then protected, then private)</li>
+<li><code>required-first</code></li>
+<li><code>kind</code> (order according to the <code>kindSortOrder</code> option)</li>
+</ul>
+<h3 id="kindsortorder" tabindex="-1">kindSortOrder</h3>
+<p>Specifies the relative ordering of reflections if <code>kind</code> is specified in the <code>sort</code> option. The default order is:</p>
+<pre class="language-json"><code class="language-json"><span class="token comment">// typedoc.json</span><br><span class="token punctuation">{</span><br>    <span class="token property">"kindSortOrder"</span><span class="token operator">:</span> <span class="token punctuation">[</span><br>        <span class="token string">"Reference"</span><span class="token punctuation">,</span><br>        <span class="token string">"Project"</span><span class="token punctuation">,</span><br>        <span class="token string">"Module"</span><span class="token punctuation">,</span><br>        <span class="token string">"Namespace"</span><span class="token punctuation">,</span><br>        <span class="token string">"Enum"</span><span class="token punctuation">,</span><br>        <span class="token string">"EnumMember"</span><span class="token punctuation">,</span><br>        <span class="token string">"Class"</span><span class="token punctuation">,</span><br>        <span class="token string">"Interface"</span><span class="token punctuation">,</span><br>        <span class="token string">"TypeAlias"</span><span class="token punctuation">,</span><br>        <span class="token string">"Constructor"</span><span class="token punctuation">,</span><br>        <span class="token string">"Property"</span><span class="token punctuation">,</span><br>        <span class="token string">"Variable"</span><span class="token punctuation">,</span><br>        <span class="token string">"Function"</span><span class="token punctuation">,</span><br>        <span class="token string">"Accessor"</span><span class="token punctuation">,</span><br>        <span class="token string">"Method"</span><span class="token punctuation">,</span><br>        <span class="token string">"ObjectLiteral"</span><span class="token punctuation">,</span><br>        <span class="token string">"Parameter"</span><span class="token punctuation">,</span><br>        <span class="token string">"TypeParameter"</span><span class="token punctuation">,</span><br>        <span class="token string">"TypeLiteral"</span><span class="token punctuation">,</span><br>        <span class="token string">"CallSignature"</span><span class="token punctuation">,</span><br>        <span class="token string">"ConstructorSignature"</span><span class="token punctuation">,</span><br>        <span class="token string">"IndexSignature"</span><span class="token punctuation">,</span><br>        <span class="token string">"GetSignature"</span><span class="token punctuation">,</span><br>        <span class="token string">"SetSignature"</span><span class="token punctuation">,</span><br>    <span class="token punctuation">]</span><br><span class="token punctuation">}</span></code></pre>
+<h3 id="visibilityfilters" tabindex="-1">visibilityFilters</h3>
+<pre class="language-json"><code class="language-json"><span class="token comment">// typedoc.json</span><br><span class="token punctuation">{</span><br>    <span class="token property">"visibilityFilters"</span><span class="token operator">:</span> <span class="token punctuation">{</span><br>        <span class="token property">"protected"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span><br>        <span class="token property">"private"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span><br>        <span class="token property">"inherited"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span><br>        <span class="token property">"external"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span><br>        <span class="token property">"@alpha"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span><br>        <span class="token property">"@beta"</span><span class="token operator">:</span> <span class="token boolean">false</span><br>    <span class="token punctuation">}</span><br><span class="token punctuation">}</span></code></pre>
+<p>Specifies the available filters when viewing a page. The four <code>protected</code>, <code>private</code>, <code>inherited</code>, and
+<code>external</code> options are all shown by default. Their default value may be set, or they may be omitted
+from this option to disable that filter. Further, modifier tags may be specified to introduce a custom
+sort option based on a tag.</p>
+<h3 id="searchcategoryboosts" tabindex="-1">searchCategoryBoosts</h3>
+<pre class="language-json"><code class="language-json"><span class="token comment">// typedoc.json</span><br><span class="token punctuation">{</span><br>    <span class="token property">"searchCategoryBoosts"</span><span class="token operator">:</span> <span class="token punctuation">{</span><br>        <span class="token property">"Common Items"</span><span class="token operator">:</span> <span class="token number">1.5</span><br>    <span class="token punctuation">}</span><br><span class="token punctuation">}</span></code></pre>
+<p>Configure the search to increase the relevance of items in a given category.</p>
+<h3 id="searchgroupboosts" tabindex="-1">searchGroupBoosts</h3>
+<pre class="language-json"><code class="language-json"><span class="token comment">// typedoc.json</span><br><span class="token punctuation">{</span><br>    <span class="token property">"searchCategoryBoosts"</span><span class="token operator">:</span> <span class="token punctuation">{</span><br>        <span class="token property">"Classes"</span><span class="token operator">:</span> <span class="token number">1.5</span><br>    <span class="token punctuation">}</span><br><span class="token punctuation">}</span></code></pre>
+<p>Configure the search to increase the relevance of items in a given group.</p>
+<h2 id="general-options" tabindex="-1">General Options</h2>
+<p>Options which don't fit elsewhere.</p>
+<h3 id="watch" tabindex="-1">watch</h3>
+<pre class="language-bash"><code class="language-bash">$ typedoc <span class="token parameter variable">--watch</span></code></pre>
+<p>Use TypeScript's incremental compiler to watch source files for changes and build the docs on change. May be combined with <code>--emit</code>.</p>
+<p>Note: This mode will only detect changes to files watched by the TypeScript compiler. Changes to other files (README.md, imported files with <code>--includes</code>) will not cause a rebuild.</p>
+<h3 id="preservewatchoutput" tabindex="-1">preserveWatchOutput</h3>
+<pre class="language-bash"><code class="language-bash">$ typedoc <span class="token parameter variable">--watch</span> <span class="token parameter variable">--preserveWatchOutput</span></code></pre>
+<p>By default, <code>--watch</code> clears the screen between compilation steps. If <code>--preserveWatchOutput</code> is specified, this behavior is disabled.</p>
+<h3 id="help" tabindex="-1">help</h3>
+<pre class="language-bash"><code class="language-bash">$ typedoc <span class="token parameter variable">--help</span></code></pre>
+<p>Print all available options, along with a short description. Also prints a list of supported highlighting languages.</p>
+<h3 id="version" tabindex="-1">version</h3>
+<pre class="language-bash"><code class="language-bash">$ typedoc <span class="token parameter variable">--version</span></code></pre>
+<p>Prints TypeDoc's version.</p>
+<h3 id="showconfig" tabindex="-1">showConfig</h3>
+<pre class="language-bash"><code class="language-bash">$ typedoc <span class="token parameter variable">--showConfig</span></code></pre>
+<p>Print TypeDoc's config and exit. Useful for debugging what options have been set.</p>
+<h3 id="plugin" tabindex="-1">plugin</h3>
+<pre class="language-bash"><code class="language-bash">$ typedoc <span class="token parameter variable">--plugin</span> <span class="token operator">&lt;</span>none<span class="token operator">|</span>plugin<span class="token operator">></span></code></pre>
+<p>Specifies the plugins that should be loaded. By default, all installed npm packages with one of the following in their keywords will be loaded.</p>
+<ul>
+<li><code>typedocplugin</code> - Widest support, discouraged for plugins only supporting versions newer than 0.22.8.</li>
+<li><code>typedoc-plugin</code> - Replacement for <code>typedocplugin</code>, used for plugins which do more than just add a theme, introduced in 0.22.9.</li>
+<li><code>typedoc-theme</code> - Used for plugins which add a theme, and should show up on the <a href="../themes/">Themes</a> page, introduced in 0.22.9.</li>
+</ul>
+<p>If this option is specified, automatic package discovery and loading will be disabled.</p>
+<h3 id="logger" tabindex="-1">logger</h3>
+<pre class="language-bash"><code class="language-bash">$ typedoc <span class="token parameter variable">--logger</span> <span class="token operator">&lt;</span>none<span class="token operator">|</span>Function<span class="token operator">></span></code></pre>
+<p>Specifies the logger to write output to. When using TypeDoc programmatically, a function may be specified that will be called with the log message. By default, logs to the console. <code>none</code> may be passed to disable logging.</p>
+<h3 id="loglevel" tabindex="-1">logLevel</h3>
+<pre class="language-bash"><code class="language-bash">$ typedoc <span class="token parameter variable">--logLevel</span> Verbose</code></pre>
+<p>Specifies the log level to be printed to the console. Defaults to <code>Info</code>. The available levels are:</p>
+<ul>
+<li>Verbose - Print all log messages, may include debugging information intended for TypeDoc developers</li>
+<li>Info - Print informational log messages along with warning and error messages</li>
+<li>Warn - Print warning and error messages</li>
+<li>Error - Print only error messages</li>
+</ul>
+<h3 id="skiperrorchecking" tabindex="-1">skipErrorChecking</h3>
+<pre class="language-bash"><code class="language-bash">$ typedoc <span class="token parameter variable">--skipErrorChecking</span></code></pre>
+<p>Instructs TypeDoc to not run the type checker before converting a project. Enabling this option may improve generation time, but could also result in crashes if your code contains type errors.</p>
+<h2 id="validation" tabindex="-1">Validation</h2>
+<p>Options that control how TypeDoc validates your documentation</p>
+<h3 id="validation-1" tabindex="-1">validation</h3>
+<pre class="language-bash"><code class="language-bash">$ typedoc <span class="token parameter variable">--validation.invalidLink</span><br>$ typedoc <span class="token parameter variable">--validation</span></code></pre>
+<pre class="language-json"><code class="language-json"><span class="token punctuation">{</span><br>    <span class="token property">"validation"</span><span class="token operator">:</span> <span class="token punctuation">{</span><br>        <span class="token property">"notExported"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span><br>        <span class="token property">"invalidLink"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span><br>        <span class="token property">"notDocumented"</span><span class="token operator">:</span> <span class="token boolean">false</span><br>    <span class="token punctuation">}</span><br><span class="token punctuation">}</span></code></pre>
+<p>Specifies validation steps TypeDoc should perform on your generated documentation.</p>
+<h3 id="treatwarningsaserrors" tabindex="-1">treatWarningsAsErrors</h3>
+<pre class="language-bash"><code class="language-bash">$ typedoc <span class="token parameter variable">--treatWarningsAsErrors</span></code></pre>
+<p>Causes TypeDoc to treat any reported warnings as fatal errors that can prevent documentation from being generated.</p>
+<h3 id="intentionallynotexported" tabindex="-1">intentionallyNotExported</h3>
+<p>Lists symbols which are intentionally excluded from the documentation output and should not produce warnings.
+Entries may optionally specify a file name before a colon to only suppress warnings for symbols declared in a specific file.</p>
+<p>typedoc.json:</p>
+<pre class="language-json"><code class="language-json"><span class="token punctuation">{</span><br>    <span class="token property">"intentionallyNotExported"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"InternalClass"</span><span class="token punctuation">,</span> <span class="token string">"src/other.ts:OtherInternal"</span><span class="token punctuation">]</span><br><span class="token punctuation">}</span></code></pre>
+<h3 id="requiredtobedocumented" tabindex="-1">requiredToBeDocumented</h3>
+<p>Set the list of reflection types that must be documented, used by <code>validation.notDocumented</code></p>
+<p>typedoc.json:</p>
+<pre class="language-json"><code class="language-json"><span class="token punctuation">{</span><br>    <span class="token property">"requiredToBeDocumented"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"Enum"</span><span class="token punctuation">,</span> <span class="token string">"Class"</span><span class="token punctuation">]</span><br><span class="token punctuation">}</span></code></pre>
+</div>
+        <div class="toc-container"></div>
+    </div>
+</div>
+</section>
+
+        <footer class="container">
+    <div class="theme-container">
+        Theme
+        <select id="theme">
+            <option value="os">OS</option>
+            <option value="light">Light</option>
+            <option value="dark">Dark</option>
+        </select>
+    </div>
+    <a
+        href="https://github.com/TypeStrong/typedoc-site/blob/master/./guides/options.md"
+        class="edit-github"
+        >Edit on GitHub</a
+    >
+</footer>
+
+    </body>
+</html>
