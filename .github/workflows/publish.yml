@@ -6,6 +6,7 @@ on:
     schedule:
         - cron: "0 12 * * *"
     workflow_dispatch:
+    workflow_call:
 jobs:
     publish-site:
         runs-on: ubuntu-latest
@@ -43,5 +44,5 @@ jobs:
               with:
                   branch: gh-pages
                   folder: _site
-                  git-config-name: TypeDoc Bot
-                  git-config-email: typedoc@gerritbirkeland.com
+                  git-config-name: QubitPi
+                  git-config-email: jack20191124@proton.me

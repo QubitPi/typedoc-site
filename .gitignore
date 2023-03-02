@@ -1,4 +1,5 @@
 _site
+.idea/
 typedoc
 node_modules
 guides/changelog.md

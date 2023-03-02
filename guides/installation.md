@@ -125,3 +125,173 @@ async function main() {
 
 main().catch(console.error);
 ```
+
+### Integrating with Docusaurus
+
+Assuming we have a react project called **my-app** and inside `my-app` directory there is a Docusaurus-generated
+project at `my-app/doc` directory, we will simply put up the script above with slight modifications:
+
+- The file is **docs/scripts/typedoc.js**
+- The **my-app**'s `tsconfig.json` is in the parent directory of docusaurus doc directory
+- We will also be having image-enriched TypeDoc so we configure `media` options in `app.bootstrap`
+- The generated TypeDoc HTML will be co-located with Docusaurus doc build; so it will be under **./build/api**. In the
+  mean time, the Docusaurus `build` command will be `"build": "docusaurus build && node scripts/typedoc.js"`
+
+```javascript
+const TypeDoc = require("typedoc");
+
+async function main() {
+  const app = new TypeDoc.Application();
+
+  // Ask TypeDoc to load tsconfig.json and typedoc.json files
+  app.options.addReader(new TypeDoc.TSConfigReader());
+  app.options.addReader(new TypeDoc.TypeDocReader());
+
+  app.bootstrap({
+    // typedoc options
+    entryPoints: [
+      "../src/components/SomeDeclaration.d.ts",
+      "../src/components/SomeComponent.tsx"
+    ],
+    tsconfig: "../tsconfig.json",
+    media: "static/img/typedoc"
+  });
+
+  const project = app.convert();
+
+  // Project has converted correctly
+  if (project) {
+    const outputDir = "./build/api";
+
+    // Rendered docs
+    await app.generateDocs(project, outputDir);
+    // Alternatively generate JSON output
+    await app.generateJson(project, outputDir + "/documentation.json");
+  }
+}
+
+main().catch(console.error);
+```
+
+Since TypeDoc depends on my-apps tsconfig.json(`../tsconfig.json`), we need to run `npm install` in `my-app` directory
+and then `yarn` in `docs` directory to compile everything. For example, to 
+
+```yaml
+---
+name: Release
+
+"on":
+  push:
+    branches:
+      - master
+
+jobs:
+  test:
+    uses: ./.github/workflows/test.yml
+    secrets: inherit
+
+  deploy-documentation:
+    needs: test
+    name: Deploy Documentation to GitHub Pages
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./docs/
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: Install Messier-61 dependencies so that TypeDoc process source files properly
+        run: |
+          cd ../
+          npm install
+      - name: Install doc dependencies
+        run: yarn install
+      - name: Build documentation
+        run: yarn build
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs/build
+          user_name: QubitPi
+          user_email: jack20191124@proton.me
+```
+
+At this point, we can run `yarn build` inside `my-app/doc`. When my-app is using TypeScript, however, the 
+"Cannot find module error when importing an static file using typescript" error might occur. We deal with it by
+[creating a `.d.ts` file `src/my-app-env.d.ts`](https://github.com/parcel-bundler/parcel/issues/1445#issuecomment-392339363)
+and put :
+
+```javascript
+/// <reference types="node" />
+/// <reference types="react" />
+/// <reference types="react-dom" />
+
+declare namespace NodeJS {
+  interface ProcessEnv {
+    readonly NODE_ENV: "development" | "production" | "test";
+    readonly PUBLIC_URL: string;
+  }
+}
+
+declare module "*.avif" {
+  const src: string;
+  export default src;
+}
+
+declare module "*.bmp" {
+  const src: string;
+  export default src;
+}
+
+declare module "*.gif" {
+  const src: string;
+  export default src;
+}
+
+declare module "*.jpg" {
+  const src: string;
+  export default src;
+}
+
+declare module "*.jpeg" {
+  const src: string;
+  export default src;
+}
+
+declare module "*.png" {
+  const src: string;
+  export default src;
+}
+
+declare module "*.webp" {
+  const src: string;
+  export default src;
+}
+
+declare module "*.svg" {
+  import * as React from "react";
+
+  export const ReactComponent: React.FunctionComponent<React.SVGProps<SVGSVGElement> & { title?: string }>;
+
+  const src: string;
+  export default src;
+}
+
+declare module "*.module.css" {
+  const classes: { readonly [key: string]: string };
+  export default classes;
+}
+
+declare module "*.module.scss" {
+  const classes: { readonly [key: string]: string };
+  export default classes;
+}
+
+declare module "*.module.sass" {
+  const classes: { readonly [key: string]: string };
+  export default classes;
+}
+```
