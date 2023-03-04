@@ -29,6 +29,6 @@ function localHelper() {}
 
 ## Get Started
 
--   [Install](/guides/installation/)
--   [Configure](/options/)
--   [Extend](/guides/plugins/)
+-   [Install](https://qubitpi.github.io/typedoc-site/guides/installation/)
+-   [Configure](https://qubitpi.github.io/typedoc-site/options/)
+-   [Extend](https://qubitpi.github.io/typedoc-site/guides/plugins/)
