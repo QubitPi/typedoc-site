@@ -474,7 +474,12 @@
 			"default": "Info"
 		},
 		"treatWarningsAsErrors": {
-			"description": "If set, warnings will be treated as errors.",
+			"description": "If set, all warnings will be treated as errors.",
+			"type": "boolean",
+			"default": false
+		},
+		"treatValidationWarningsAsErrors": {
+			"description": "If set, warnings emitted during validation will be treated as errors. This option cannot be used to disable treatWarningsAsErrors for validation warnings.",
 			"type": "boolean",
 			"default": false
 		},
