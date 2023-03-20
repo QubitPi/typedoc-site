@@ -193,7 +193,8 @@
 			"default": [
 				"@override",
 				"@virtual",
-				"@privateRemarks"
+				"@privateRemarks",
+				"@satisfies"
 			]
 		},
 		"readme": {
@@ -298,7 +299,8 @@
 				"@typedef",
 				"@callback",
 				"@prop",
-				"@property"
+				"@property",
+				"@satisfies"
 			]
 		},
 		"inlineTags": {
@@ -338,7 +340,8 @@
 				"@hidden",
 				"@ignore",
 				"@enum",
-				"@event"
+				"@event",
+				"@overload"
 			]
 		},
 		"categorizeByGroup": {
