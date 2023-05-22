@@ -29,7 +29,9 @@
 			"enum": [
 				"resolve",
 				"expand",
-				"packages"
+				"packages",
+				"legacy-packages",
+				"merge"
 			],
 			"default": "resolve"
 		},
@@ -103,6 +105,11 @@
 			"type": "boolean",
 			"default": false
 		},
+		"excludeReferences": {
+			"description": "If a symbol is exported multiple times, ignore all but the first export.",
+			"type": "boolean",
+			"default": false
+		},
 		"externalSymbolLinkMappings": {
 			"description": "Define custom links for symbols not included in the documentation.",
 			"default": {}
@@ -120,7 +127,7 @@
 		"out": {
 			"description": "Specify the location the documentation should be written to.",
 			"type": "string",
-			"default": ""
+			"default": "./docs"
 		},
 		"json": {
 			"description": "Specify the location and filename a JSON file describing the project is written to.",
@@ -194,7 +201,8 @@
 				"@override",
 				"@virtual",
 				"@privateRemarks",
-				"@satisfies"
+				"@satisfies",
+				"@overload"
 			]
 		},
 		"readme": {
@@ -242,6 +250,16 @@
 			"type": "boolean",
 			"default": false
 		},
+		"hideParameterTypesInTitle": {
+			"description": "Hides parameter types in signature titles for easier scanning.",
+			"type": "boolean",
+			"default": true
+		},
+		"cacheBust": {
+			"description": "Include the generation time in links to static assets.",
+			"type": "boolean",
+			"default": false
+		},
 		"searchInComments": {
 			"description": "If set, the search index will also include comments. This will greatly increase the size of the search index.",
 			"type": "boolean",
@@ -265,6 +283,90 @@
 			"description": "Defines links to be included in the sidebar.",
 			"default": {}
 		},
+		"navigation": {
+			"description": "Determines how the navigation sidebar is organized.",
+			"anyOf": [
+				{
+					"type": "boolean"
+				},
+				{
+					"type": "object",
+					"properties": {
+						"includeCategories": {
+							"type": "boolean"
+						},
+						"includeGroups": {
+							"type": "boolean"
+						}
+					},
+					"additionalProperties": false
+				}
+			]
+		},
+		"visibilityFilters": {
+			"description": "Specify the default visibility for builtin filters and additional filters according to modifier tags.",
+			"default": {
+				"protected": false,
+				"private": false,
+				"inherited": true,
+				"external": false
+			},
+			"type": "object",
+			"properties": {
+				"protected": {
+					"type": "boolean"
+				},
+				"private": {
+					"type": "boolean"
+				},
+				"inherited": {
+					"type": "boolean"
+				},
+				"external": {
+					"type": "boolean"
+				}
+			},
+			"patternProperties": {
+				"^@": {
+					"type": "boolean"
+				}
+			},
+			"additionalProperties": false
+		},
+		"searchCategoryBoosts": {
+			"description": "Configure search to give a relevance boost to selected categories",
+			"default": {}
+		},
+		"searchGroupBoosts": {
+			"description": "Configure search to give a relevance boost to selected kinds (eg \"class\")",
+			"default": {}
+		},
+		"jsDocCompatibility": {
+			"description": "Sets compatibility options for comment parsing that increase similarity with JSDoc comments.",
+			"anyOf": [
+				{
+					"type": "boolean"
+				},
+				{
+					"type": "object",
+					"properties": {
+						"defaultTag": {
+							"type": "boolean"
+						},
+						"exampleTag": {
+							"type": "boolean"
+						},
+						"inheritDocTag": {
+							"type": "boolean"
+						},
+						"ignoreUnescapedBraces": {
+							"type": "boolean"
+						}
+					},
+					"additionalProperties": false
+				}
+			]
+		},
 		"commentStyle": {
 			"description": "Determines how TypeDoc searches for comments.",
 			"enum": [
@@ -274,6 +376,11 @@
 				"all"
 			],
 			"default": "jsdoc"
+		},
+		"useTsLinkResolution": {
+			"description": "Use TypeScript's link resolution when determining where @link tags point. This only applies to JSDoc style comments.",
+			"type": "boolean",
+			"default": true
 		},
 		"blockTags": {
 			"description": "Block tags which TypeDoc should recognize when parsing comments.",
@@ -341,7 +448,9 @@
 				"@ignore",
 				"@enum",
 				"@event",
-				"@overload"
+				"@overload",
+				"@namespace",
+				"@interface"
 			]
 		},
 		"categorizeByGroup": {
@@ -362,6 +471,29 @@
 			},
 			"default": []
 		},
+		"groupOrder": {
+			"description": "Specify the order in which groups appear. * indicates the relative order for groups not in the list.",
+			"type": "array",
+			"items": {
+				"type": "string"
+			},
+			"default": [
+				"References",
+				"Modules",
+				"Namespaces",
+				"Enumerations",
+				"Enumeration Members",
+				"Classes",
+				"Interfaces",
+				"Type Aliases",
+				"Constructors",
+				"Properties",
+				"Variables",
+				"Functions",
+				"Accessors",
+				"Methods"
+			]
+		},
 		"sort": {
 			"description": "Specify the sort strategy for documented values.",
 			"type": "array",
@@ -371,6 +503,7 @@
 					"alphabetical",
 					"enum-value-ascending",
 					"enum-value-descending",
+					"enum-member-source-order",
 					"static-first",
 					"instance-first",
 					"visibility",
@@ -391,44 +524,6 @@
 				"type": "string"
 			},
 			"default": []
-		},
-		"visibilityFilters": {
-			"description": "Specify the default visibility for builtin filters and additional filters according to modifier tags.",
-			"default": {
-				"protected": false,
-				"private": false,
-				"inherited": true,
-				"external": false
-			},
-			"type": "object",
-			"properties": {
-				"protected": {
-					"type": "boolean"
-				},
-				"private": {
-					"type": "boolean"
-				},
-				"inherited": {
-					"type": "boolean"
-				},
-				"external": {
-					"type": "boolean"
-				}
-			},
-			"patternProperties": {
-				"^@": {
-					"type": "boolean"
-				}
-			},
-			"additionalProperties": false
-		},
-		"searchCategoryBoosts": {
-			"description": "Configure search to give a relevance boost to selected categories",
-			"default": {}
-		},
-		"searchGroupBoosts": {
-			"description": "Configure search to give a relevance boost to selected kinds (eg \"class\")",
-			"default": {}
 		},
 		"watch": {
 			"description": "Watch files for changes and rebuild docs on change.",
@@ -451,20 +546,12 @@
 			"default": false
 		},
 		"plugin": {
-			"description": "Specify the npm plugins that should be loaded. Omit to load all installed plugins, set to 'none' to load no plugins.",
+			"description": "Specify the npm plugins that should be loaded. Omit to load all installed plugins.",
 			"type": "array",
 			"items": {
 				"type": "string"
 			},
 			"default": []
-		},
-		"logger": {
-			"description": "Specify the logger that should be used, 'none' or 'console'.",
-			"default": "console",
-			"enum": [
-				"console",
-				"none"
-			]
 		},
 		"logLevel": {
 			"description": "Specify what level of logging should be used.",
@@ -472,7 +559,8 @@
 				"Verbose",
 				"Info",
 				"Warn",
-				"Error"
+				"Error",
+				"None"
 			],
 			"default": "Info"
 		},

@@ -10,17 +10,21 @@ import fetch from "node-fetch";
 const EXCLUDED_PLUGINS = [
     // Fork not intended for public use.
     "@zamiell/typedoc-plugin-markdown",
+    "@convex-dev/typedoc-plugin-markdown",
 
     // Custom plugins/themes for other libraries, likely not useful to most people.
     "@initializer-utils/typedoc-theme",
     "@colony/typedoc-plugin-markdown",
+    "jsonforms-typedoc-theme",
+    "typedoc-jsonforms-theme",
+    "suika-docs-theme",
 ];
 
 const EXCLUDED_PLUGIN_USERS = [
     // Forked typedoc-plugin-markdown, did not abide by license.
     "acceleratxr",
     // Has forked several plugins & published, forks do not appear to be for general use.
-    "silei"
+    "silei",
 ];
 
 function exec(command: string) {
@@ -226,7 +230,6 @@ async function main() {
     );
 
     // v0.23 - this needs to be updated.
-    checkVersions.length = Math.min(checkVersions.length, 2);
     await createInclude(themesWithVersions, checkVersions, "theme_content");
     console.log("Finished getting themes");
 

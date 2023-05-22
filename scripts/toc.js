@@ -1,6 +1,15 @@
 // @ts-check
 
 (function () {
+    // Ideally this should be done statically in the template, but I'm done fighting with eleventy.
+    for (const a of document.querySelectorAll(".navigation a")) {
+        if (location.pathname === new URL(a.href).pathname) {
+            a.classList.add("current");
+        }
+    }
+})();
+
+(function () {
     const theme = /** @type {HTMLInputElement | null} */ (
         document.querySelector("#theme")
     );
@@ -34,14 +43,15 @@
             anchor.appendChild(header);
 
             if (tocContainer) {
-                const level = +header.tagName.substr(1);
+                const level = +header.tagName.substring(1);
                 if (level > 1 && headers.length > 100) {
                     return;
                 }
 
-                if (level < tocContainerStack.length) {
+                while (level < tocContainerStack.length) {
                     tocContainerStack.pop();
-                } else if (level > tocContainerStack.length) {
+                }
+                if (level > tocContainerStack.length) {
                     const container = document.createElement("ol");
                     const containerLi = tocContainerStack[
                         tocContainerStack.length - 1
@@ -54,7 +64,10 @@
                 const tocAnchor = element.appendChild(
                     document.createElement("a")
                 );
-                tocAnchor.textContent = header.textContent;
+                tocAnchor.textContent = header.textContent.replace(
+                    /\([^)]*\)/,
+                    ""
+                );
                 tocAnchor.href = anchor.href;
                 tocContainerStack[tocContainerStack.length - 1].appendChild(
                     element
