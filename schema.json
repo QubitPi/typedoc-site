@@ -297,6 +297,9 @@
 						},
 						"includeGroups": {
 							"type": "boolean"
+						},
+						"fullTree": {
+							"type": "boolean"
 						}
 					},
 					"additionalProperties": false
