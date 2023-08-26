@@ -30,7 +30,6 @@
 				"resolve",
 				"expand",
 				"packages",
-				"legacy-packages",
 				"merge"
 			],
 			"default": "resolve"
@@ -220,13 +219,18 @@
 			"type": "string",
 			"default": ""
 		},
+		"disableGit": {
+			"description": "Assume that all can be linked to with the sourceLinkTemplate, sourceLinkTemplate must be set if this is enabled. {path} will be rooted at basePath",
+			"type": "boolean",
+			"default": false
+		},
 		"gitRevision": {
-			"description": "Use specified revision instead of the last revision for linking to GitHub/Bitbucket source files.",
+			"description": "Use specified revision instead of the last revision for linking to GitHub/Bitbucket source files. Has no effect if disableSources is set.",
 			"type": "string",
 			"default": ""
 		},
 		"gitRemote": {
-			"description": "Use the specified remote for linking to GitHub/Bitbucket source files.",
+			"description": "Use the specified remote for linking to GitHub/Bitbucket source files. Has no effect if disableGit or disableSources is set.",
 			"type": "string",
 			"default": "origin"
 		},
@@ -385,6 +389,11 @@
 			"type": "boolean",
 			"default": true
 		},
+		"preserveLinkText": {
+			"description": "If set, @link tags without link text will use the text content as the link. If not set, will use the target reflection name.",
+			"type": "boolean",
+			"default": true
+		},
 		"blockTags": {
 			"description": "Block tags which TypeDoc should recognize when parsing comments.",
 			"type": "array",
@@ -453,13 +462,17 @@
 				"@event",
 				"@overload",
 				"@namespace",
-				"@interface"
+				"@interface",
+				"@showCategories",
+				"@hideCategories",
+				"@showGroups",
+				"@hideGroups"
 			]
 		},
 		"categorizeByGroup": {
 			"description": "Specify whether categorization will be done at the group level.",
 			"type": "boolean",
-			"default": true
+			"default": false
 		},
 		"defaultCategory": {
 			"description": "Specify the default category for reflections without a category.",
