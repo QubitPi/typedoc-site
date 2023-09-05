@@ -94,6 +94,14 @@
 			"type": "boolean",
 			"default": false
 		},
+		"excludeCategories": {
+			"description": "Exclude symbols within this category from the documentation.",
+			"type": "array",
+			"items": {
+				"type": "string"
+			},
+			"default": []
+		},
 		"excludePrivate": {
 			"description": "Ignore private variables and methods.",
 			"type": "boolean",
@@ -208,6 +216,11 @@
 			"description": "Path to the readme file that should be displayed on the index page. Pass `none` to disable the index page and start the documentation on the globals page.",
 			"type": "string",
 			"default": ""
+		},
+		"stripYamlFrontmatter": {
+			"description": "Strip YAML frontmatter from markdown files.",
+			"type": "boolean",
+			"default": false
 		},
 		"cname": {
 			"description": "Set the CNAME file text, it's useful for custom domains on GitHub Pages.",
