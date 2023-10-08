@@ -300,6 +300,14 @@
 			"description": "Defines links to be included in the sidebar.",
 			"default": {}
 		},
+		"navigationLeaves": {
+			"description": "Branches of the navigation tree which should not be expanded.",
+			"type": "array",
+			"items": {
+				"type": "string"
+			},
+			"default": []
+		},
 		"navigation": {
 			"description": "Determines how the navigation sidebar is organized.",
 			"anyOf": [
@@ -545,6 +553,11 @@
 				"instance-first",
 				"alphabetical"
 			]
+		},
+		"sortEntryPoints": {
+			"description": "If set, entry points will be subject to the same sorting rules as other reflections.",
+			"type": "boolean",
+			"default": true
 		},
 		"kindSortOrder": {
 			"description": "Specify the sort order for reflections when 'kind' is specified.",
