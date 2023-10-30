@@ -193,6 +193,26 @@
 			"type": "boolean",
 			"default": false
 		},
+		"sourceLinkTemplate": {
+			"description": "Specify a link template to be used when generating source urls. If not set, will be automatically created using the git remote. Supports {path}, {line}, {gitRevision} placeholders.",
+			"type": "string",
+			"default": ""
+		},
+		"gitRevision": {
+			"description": "Use specified revision instead of the last revision for linking to GitHub/Bitbucket source files. Has no effect if disableSources is set.",
+			"type": "string",
+			"default": ""
+		},
+		"gitRemote": {
+			"description": "Use the specified remote for linking to GitHub/Bitbucket source files. Has no effect if disableGit or disableSources is set.",
+			"type": "string",
+			"default": "origin"
+		},
+		"disableGit": {
+			"description": "Assume that all can be linked to with the sourceLinkTemplate, sourceLinkTemplate must be set if this is enabled. {path} will be rooted at basePath",
+			"type": "boolean",
+			"default": false
+		},
 		"basePath": {
 			"description": "Specifies the base path to be used when displaying file paths.",
 			"type": "string",
@@ -227,25 +247,10 @@
 			"type": "string",
 			"default": ""
 		},
-		"sourceLinkTemplate": {
-			"description": "Specify a link template to be used when generating source urls. If not set, will be automatically created using the git remote. Supports {path}, {line}, {gitRevision} placeholders.",
-			"type": "string",
-			"default": ""
-		},
-		"disableGit": {
-			"description": "Assume that all can be linked to with the sourceLinkTemplate, sourceLinkTemplate must be set if this is enabled. {path} will be rooted at basePath",
+		"sourceLinkExternal": {
+			"description": "Specifies that source links should be treated as external links to be opened in a new tab.",
 			"type": "boolean",
 			"default": false
-		},
-		"gitRevision": {
-			"description": "Use specified revision instead of the last revision for linking to GitHub/Bitbucket source files. Has no effect if disableSources is set.",
-			"type": "string",
-			"default": ""
-		},
-		"gitRemote": {
-			"description": "Use the specified remote for linking to GitHub/Bitbucket source files. Has no effect if disableGit or disableSources is set.",
-			"type": "string",
-			"default": "origin"
 		},
 		"githubPages": {
 			"description": "Generate a .nojekyll file to prevent 404 errors in GitHub Pages. Defaults to `true`.",
@@ -545,7 +550,8 @@
 					"instance-first",
 					"visibility",
 					"required-first",
-					"kind"
+					"kind",
+					"external-last"
 				]
 			},
 			"default": [
