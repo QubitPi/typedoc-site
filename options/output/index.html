@@ -185,6 +185,9 @@ common directory to all source files. In the above example, TypeDoc would displa
 <h2 id="cname" tabindex="-1">cname</h2>
 <pre class="language-bash"><code class="language-bash">$ typedoc <span class="token parameter variable">--cname</span> typedoc.org</code></pre>
 <p>Create a CNAME file in the output directory with the specified text.</p>
+<h3 id="sourcelinkexternal" tabindex="-1">sourceLinkExternal</h3>
+<pre class="language-bash"><code class="language-bash">$ typedoc <span class="token parameter variable">--sourceLinkExternal</span></code></pre>
+<p>Treat source links as external links that open in a new tab when generating HTML.</p>
 <h2 id="htmllang" tabindex="-1">htmlLang</h2>
 <pre class="language-bash"><code class="language-bash">$ typedoc <span class="token parameter variable">--htmlLang</span> es</code></pre>
 <p>Sets the <code>lang</code> attribute in TypeDoc's HTML output, defaults to <code>en</code>, resulting in <code>&lt;html lang=&quot;en&quot;&gt;</code>.</p>
@@ -230,6 +233,11 @@ to an order of magnitude larger in projects with many long comments.</p>
 <p>The <a href="/options/organization/#categorizebygroup">categorizeByGroup</a> option also affects this behavior.
 If set (the default), and <code>includeGroups</code> is <em>not</em> set, the value of <code>includeCategories</code> will be effectively
 ignored since categories will be created only within groups.</p>
+<h2 id="navigationleaves" tabindex="-1">navigationLeaves</h2>
+<pre class="language-json"><code class="language-json"><span class="token comment">// typedoc.json</span><br><span class="token punctuation">{</span><br>    <span class="token property">"navigationLeaves"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"JSONOutput"</span><span class="token punctuation">]</span><br><span class="token punctuation">}</span></code></pre>
+<p>Specifies namespaces/modules which should not be expandable in the navigation tree.
+To specify a nested namespace, separate the parent names with <code>.</code> according to the displayed
+tree, skipping the top level project link. <code>ParentNS.ChildNS</code></p>
 <h2 id="visibilityfilters" tabindex="-1">visibilityFilters</h2>
 <pre class="language-json"><code class="language-json"><span class="token comment">// typedoc.json</span><br><span class="token punctuation">{</span><br>    <span class="token property">"visibilityFilters"</span><span class="token operator">:</span> <span class="token punctuation">{</span><br>        <span class="token property">"protected"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span><br>        <span class="token property">"private"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span><br>        <span class="token property">"inherited"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span><br>        <span class="token property">"external"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span><br>        <span class="token property">"@alpha"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span><br>        <span class="token property">"@beta"</span><span class="token operator">:</span> <span class="token boolean">false</span><br>    <span class="token punctuation">}</span><br><span class="token punctuation">}</span></code></pre>
 <p>Specifies the available filters when viewing a page. The four <code>protected</code>, <code>private</code>, <code>inherited</code>, and

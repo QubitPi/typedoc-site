@@ -172,7 +172,8 @@
 <h2 id="compileroptions" tabindex="-1">compilerOptions</h2>
 <p>Used to selectively override compiler options for generating documentation. TypeDoc parses code using the TypeScript compiler and will therefore behave similarly to tsc. Values set with this option
 will override options read from <code>tsconfig.json</code>. See <a href="https://github.com/TypeStrong/typedoc/pull/1891">#1891</a> for details.</p>
-<pre class="language-json"><code class="language-json"><span class="token punctuation">{</span><br>    <span class="token property">"compilerOptions"</span><span class="token operator">:</span> <span class="token punctuation">{</span><br>        <span class="token property">"strictNullChecks"</span><span class="token operator">:</span> <span class="token boolean">false</span><br>    <span class="token punctuation">}</span><br><span class="token punctuation">}</span></code></pre>
+<p>This option may only be set within a config file.</p>
+<pre class="language-json"><code class="language-json"><span class="token comment">// typedoc.json</span><br><span class="token punctuation">{</span><br>    <span class="token property">"compilerOptions"</span><span class="token operator">:</span> <span class="token punctuation">{</span><br>        <span class="token property">"strictNullChecks"</span><span class="token operator">:</span> <span class="token boolean">false</span><br>    <span class="token punctuation">}</span><br><span class="token punctuation">}</span></code></pre>
 <h2 id="plugin" tabindex="-1">plugin</h2>
 <pre class="language-bash"><code class="language-bash">$ typedoc <span class="token parameter variable">--plugin</span> typedoc-plugin-markdown<br>$ typedoc <span class="token parameter variable">--plugin</span> ./custom-plugin.js</code></pre>
 <p>Specifies the plugins that should be loaded. By default, no plugins are loaded.</p>

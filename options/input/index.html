@@ -135,24 +135,11 @@ Entry points can be handled in one of three ways, see <a href="#entrypointstrate
 <h3 id="expand-(default-prior-to-v0.22.0)" tabindex="-1">expand (default prior to v0.22.0)</h3>
 <p>Expects all entry points to be contained within the root level tsconfig project. If a directory is given, files within it are recursively expanded. Effectively, this will make a separate page for each individual TypeScript file.</p>
 <h3 id="packages" tabindex="-1">packages</h3>
-<p>Expects all entry points to be directories to run TypeDoc within. After each entry point has been run through TypeDoc, the projects will be merged together and rendered to a single site. Each package may have its own set of TypeDoc
+<p>Expects all entry points to be directories to <em>effectively</em> run TypeDoc within. After each entry point has been converted by TypeDoc to a JSON model, the projects will be merged together and rendered to a single site or JSON output. Each package may have its own set of TypeDoc
 configuration, but <code>plugins</code> within sub-projects will <em>not</em> be loaded. See <a href="https://github.com/Gerrit0/typedoc-packages-example">Gerrit0/typedoc-packages-example</a> for an example monorepo which uses this option.</p>
 <p>Configuration specified in the root level project will <em>not</em> be copied to child projects.</p>
 <h3 id="merge" tabindex="-1">merge</h3>
 <p>Expects all entry points to be <code>.json</code> files generated with a previous run of TypeDoc with the <a href="/options/output/#json"><code>--json</code></a> option set. These entry points will be merged into a single project.</p>
-<h3 id="legacy-packages-(deprecated)" tabindex="-1">legacy-packages (deprecated)</h3>
-<p>If your codebase is comprised of one or more npm packages, you can pass the paths to these packages and TypeDoc will attempt to determine entry points based on <code>package.json</code>'s <code>main</code> property (with default value <code>index.js</code>) and if it wasn't found, based on <code>types</code> property. If any of the packages given are the root of an <a href="https://docs.npmjs.com/cli/v7/using-npm/workspaces">npm Workspace</a> or a <a href="https://classic.yarnpkg.com/en/docs/workspaces/">Yarn Workspace</a> TypeDoc will find all the <code>workspaces</code> defined in the <code>package.json</code>. This mode requires source maps in your JS entry points or that you specify the TypeDoc entry point in your package.json to tell TypeDoc where your entry point TypeScript source. Supports wildcard paths in the same fashion as those found in npm or Yarn workspaces.</p>
-<p>You may also need to configure TypeDoc for each child package using config field <code>typedoc</code> in package.json file for TypeDoc to work properly.</p>
-<p>Example config in child package's package.json, note that this configuration <strong>does not</strong> support all TypeDoc options.</p>
-<pre class="language-json"><code class="language-json"><span class="token punctuation">{</span><br>    <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"child-package"</span><span class="token punctuation">,</span><br>    <span class="token property">"version"</span><span class="token operator">:</span> <span class="token string">"1.0.0"</span><span class="token punctuation">,</span><br>    <span class="token property">"typedoc"</span><span class="token operator">:</span> <span class="token punctuation">{</span><br>        <span class="token property">"entryPoint"</span><span class="token operator">:</span> <span class="token string">"./src/index.ts"</span><span class="token punctuation">,</span><br>        <span class="token property">"readmeFile"</span><span class="token operator">:</span> <span class="token string">"./README.md"</span><span class="token punctuation">,</span><br>        <span class="token property">"displayName"</span><span class="token operator">:</span> <span class="token string">"Child Package"</span><span class="token punctuation">,</span><br>        <span class="token property">"tsconfig"</span><span class="token operator">:</span> <span class="token string">"./tsconfig.lib.json"</span><br>    <span class="token punctuation">}</span><br><span class="token punctuation">}</span></code></pre>
-<h4 id="entrypoint" tabindex="-1">entryPoint</h4>
-<p>Entry point strategy <code>Packages</code> requires sourcemaps in your JS entry points or that you specify the TypeDoc entry point in your package.json to tell TypeDoc where your entry point TypeScript source. Supports wildcard paths in the same fashion as those found in npm or Yarn workspaces.</p>
-<h4 id="readmefile" tabindex="-1">readmeFile</h4>
-<p>Path to the readme file that should be displayed on the index page of the package doc.</p>
-<h4 id="displayname" tabindex="-1">displayName</h4>
-<p>The name of the package that will be used when rendering the doc. If none provided, the default name will be the name of the package specified in package.json file.</p>
-<h4 id="tsconfig" tabindex="-1">tsconfig</h4>
-<p>Path of the tsconfig file to use when creating the program for compilation. If omitted, will look for <code>tsconfig.json</code> like <code>tsc</code> does.</p>
 <h2 id="exclude" tabindex="-1">exclude</h2>
 <pre class="language-bash"><code class="language-bash">$ typedoc <span class="token parameter variable">--exclude</span> <span class="token string">"**/*+(index|.spec|.e2e).ts"</span></code></pre>
 <p>Exclude files by the given pattern when a path is provided as source. This option is only used to remove files from consideration as
@@ -161,7 +148,7 @@ entry points. Unlike TypeScript's <code>exclude</code> option, it <em>cannot</em
 <p>Supports <a href="https://github.com/isaacs/minimatch">minimatch</a> patterns.
 In configuration files, this option accepts an array of patterns. On the command line, it may be specified multiple times to add multiple patterns.
 If an exported member from one of your entry points is located in an excluded file, it will be excluded from the documentation.</p>
-<p>If <code>entryPointStrategy</code> is set to `packages, then you can specify package directories with this option to exclude from documentation.</p>
+<p>If <code>entryPointStrategy</code> is set to <code>packages</code>, then you can specify package directories with this option to exclude from documentation.</p>
 <h2 id="externalpattern" tabindex="-1">externalPattern</h2>
 <pre class="language-bash"><code class="language-bash">$ typedoc <span class="token parameter variable">--externalPattern</span> <span class="token string">'lib/**/*.ts'</span> <span class="token parameter variable">--externalPattern</span> <span class="token string">'external/**/*.ts'</span></code></pre>
 <p>Define patterns for extra files that should be considered external. Can be used along with <code>--excludeExternals</code> to remove external modules from the documentation.</p>
@@ -187,6 +174,9 @@ If an exported member from one of your entry points is located in an excluded fi
 <h2 id="excludereferences" tabindex="-1">excludeReferences</h2>
 <pre class="language-bash"><code class="language-bash">$ typedoc <span class="token parameter variable">--excludeReferences</span></code></pre>
 <p>Removes re-exports of a symbol already included in the documentation from the documentation. Defaults to false.</p>
+<h2 id="excludecategories" tabindex="-1">excludeCategories</h2>
+<pre class="language-bash"><code class="language-bash">$ typedoc <span class="token parameter variable">--excludeCategories</span> A <span class="token parameter variable">--excludeCategories</span> B</code></pre>
+<p>Removes reflections associated with any of the given categories.</p>
 <h2 id="name" tabindex="-1">name</h2>
 <pre class="language-bash"><code class="language-bash">$ typedoc <span class="token parameter variable">--name</span> <span class="token operator">&lt;</span>Documentation title<span class="token operator">></span></code></pre>
 <p>Set the name of the project that will be used in the header of the template.
@@ -215,9 +205,15 @@ You can use <code>git remote</code> to view a list of valid remotes.
 If you are updating documentation for a forked package, you probably want to pass <code>--gitRemote upstream</code>.</p>
 <p>(Deprecated, will be removed in 0.24) This may be set to a URL (staring with <code>http://</code> or <code>https://</code>), in which case TypeDoc will assume that it is
 the base URL for links. Links will be created to <code>{gitRemote}/{gitRevision}/{filePath}</code>.</p>
+<h2 id="disablegit" tabindex="-1">disableGit</h2>
+<pre class="language-bash"><code class="language-bash">$ typedoc <span class="token parameter variable">--disableGit</span></code></pre>
+<p>Prevents TypeDoc from using Git to try to determine if sources can be linked, with this enabled, sources will always be linked, even if not part of a git repo.</p>
 <h2 id="readme" tabindex="-1">readme</h2>
 <pre class="language-bash"><code class="language-bash">$ typedoc <span class="token parameter variable">--readme</span> <span class="token operator">&lt;</span>path/to/readme<span class="token operator">|</span>none<span class="token operator">></span></code></pre>
 <p>Path to the readme file that should be displayed on the index page. If no readme is discovered or read, the index page will be disabled.</p>
+<h2 id="stripyamlfrontmatter" tabindex="-1">stripYamlFrontmatter</h2>
+<pre class="language-bash"><code class="language-bash">$ typedoc <span class="token parameter variable">--stripYamlFrontmatter</span></code></pre>
+<p>Remove YAML frontmatter from the readme file displayed on the main page.</p>
 </div>
         <div class="toc-container"></div>
     </div>

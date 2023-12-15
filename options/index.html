@@ -122,8 +122,7 @@
             </nav>
         </div>
         <div class="typography"><h1 id="options" tabindex="-1">Options</h1>
-<p>TypeDoc accepts most of the command line arguments that the TypeScript compiler accepts.
-All command line arguments that are passed in without a flag will be parsed as input files.
+<p>All command line arguments that are passed in without a flag will be parsed as input files.
 Any options passed on the command line will override options set in a configuration file.</p>
 <pre class="language-bash"><code class="language-bash">$ typedoc <span class="token parameter variable">--out</span> path/to/documentation/ path/to/typescript/project/index.ts</code></pre>
 <h2 id="configuration-options" tabindex="-1">Configuration Options</h2>
@@ -148,13 +147,16 @@ Any options passed on the command line will override options set in a configurat
 <li><a href="/options/input/#excludeprivate">excludePrivate</a></li>
 <li><a href="/options/input/#excludeprotected">excludeProtected</a></li>
 <li><a href="/options/input/#excludereferences">excludeReferences</a></li>
+<li><a href="/options/input/#excludecategories">excludeCategories</a></li>
 <li><a href="/options/input/#name">name</a></li>
 <li><a href="/options/input/#includeversion">includeVersion</a></li>
 <li><a href="/options/input/#disablesources">disableSources</a></li>
 <li><a href="/options/input/#sourcelinktemplate">sourceLinkTemplate</a></li>
 <li><a href="/options/input/#gitrevision">gitRevision</a></li>
 <li><a href="/options/input/#gitremote">gitRemote</a></li>
+<li><a href="/options/input/#disablegit">disablegit</a></li>
 <li><a href="/options/input/#readme">readme</a></li>
+<li><a href="/options/input/#stripyamlfrontmatter">stripYamlFrontmatter</a></li>
 </ul>
 <h2 id="output-options" tabindex="-1">Output Options</h2>
 <p>Options which control TypeDoc's output.</p>
@@ -170,6 +172,7 @@ Any options passed on the command line will override options set in a configurat
 <li><a href="/options/output/#markedoptions">markedOptions</a></li>
 <li><a href="/options/output/#basepath">basePath</a></li>
 <li><a href="/options/output/#cname">cname</a></li>
+<li><a href="/options/output/#sourcelinkexternal">sourceLinkExternal</a></li>
 <li><a href="/options/output/#htmllang">htmlLang</a></li>
 <li><a href="/options/output/#githubpages">githubPages</a></li>
 <li><a href="/options/output/#cachebust">cacheBust</a></li>
@@ -180,6 +183,7 @@ Any options passed on the command line will override options set in a configurat
 <li><a href="/options/output/#titlelink">titleLink</a></li>
 <li><a href="/options/output/#navigationlinks">navigationLinks</a></li>
 <li><a href="/options/output/#navigation">navigation</a></li>
+<li><a href="/options/output/#navigationleaves">navigationLeaves</a></li>
 <li><a href="/options/output/#sidebarlinks">sidebarLinks</a></li>
 <li><a href="/options/output/#visibilityfilters">visibilityFilters</a></li>
 <li><a href="/options/output/#searchcategoryboosts">searchCategoryBoosts</a></li>
@@ -190,6 +194,7 @@ Any options passed on the command line will override options set in a configurat
 <ul>
 <li><a href="/options/comments/#commentstyle">commentStyle</a></li>
 <li><a href="/options/comments/#usetslinkresolution">useTsLinkResolution</a></li>
+<li><a href="/options/comments/#preservelinktext">preserveLinkText</a></li>
 <li><a href="/options/comments/#jsdoccompatibility">jsDocCompatibility</a></li>
 <li><a href="/options/comments/#blocktags">blockTags</a></li>
 <li><a href="/options/comments/#inlinetags">inlineTags</a></li>
@@ -206,6 +211,7 @@ Any options passed on the command line will override options set in a configurat
 <li><a href="/options/organization/#categoryorder">categoryOrder</a></li>
 <li><a href="/options/organization/#grouporder">groupOrder</a></li>
 <li><a href="/options/organization/#sort">sort</a></li>
+<li><a href="/options/organization/#sortentrypoints">sortEntryPoints</a></li>
 <li><a href="/options/organization/#kindsortorder">kindSortOrder</a></li>
 </ul>
 <h2 id="validation-options" tabindex="-1">Validation Options</h2>
