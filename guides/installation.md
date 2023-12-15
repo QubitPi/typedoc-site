@@ -135,11 +135,11 @@ main().catch(console.error);
 ### Integrating with Docusaurus
 
 Assuming we have a react project called **my-app** and inside `my-app` directory there is a Docusaurus-generated
-project at `my-app/doc` directory, we will simply put up the script above with slight modifications:
+project at `my-app/docs` directory, we will simply put up the script above with slight modifications:
 
 - The file is **docs/scripts/typedoc.js**
 - The **my-app**'s `tsconfig.json` is in the parent directory of docusaurus doc directory
-- We will also be having image-enriched TypeDoc so we configure `media` options in `app.bootstrap`
+- We will also be having image-enriched TypeDoc so we will add a `media` option
 - The generated TypeDoc HTML will be co-located with Docusaurus doc build; so it will be under **./build/api**. In the
   mean time, the Docusaurus `build` command will be `"build": "docusaurus build && node scripts/typedoc.js"`
 
@@ -147,33 +147,26 @@ project at `my-app/doc` directory, we will simply put up the script above with s
 const TypeDoc = require("typedoc");
 
 async function main() {
-  const app = new TypeDoc.Application();
+  const app = await TypeDoc.Application.bootstrap({
+    entryPoints: ["../packages/"],
+    exclude: "../**/*+(test|env.d|setupTests).*",
+    entryPointStrategy: "expand",
+    tsconfig: "../tsconfig.json",
+    media: "static/img/typedoc",
+  });
 
-  // Ask TypeDoc to load tsconfig.json and typedoc.json files
   app.options.addReader(new TypeDoc.TSConfigReader());
   app.options.addReader(new TypeDoc.TypeDocReader());
 
-  app.bootstrap({
-    // typedoc options
-    entryPoints: [
-      "../src/components/SomeDeclaration.d.ts",
-      "../src/components/SomeComponent.tsx"
-    ],
-    tsconfig: "../tsconfig.json",
-    media: "static/img/typedoc"
-  });
+  const project = await app.convert();
 
-  const project = app.convert();
-
-  // Project has converted correctly
-  if (project) {
-    const outputDir = "./build/api";
-
-    // Rendered docs
-    await app.generateDocs(project, outputDir);
-    // Alternatively generate JSON output
-    await app.generateJson(project, outputDir + "/documentation.json");
+  if (!project) {
+    throw new Error(`app.convert() was not successful`); // early return
   }
+
+  const outputDir = "./build/api";
+  app.generateDocs(project, outputDir);
+  app.generateJson(project, outputDir + "/documentation.json");
 }
 
 main().catch(console.error);
@@ -190,7 +183,7 @@ name: Release
   push:
     branches:
       - master
-        
+
 env:
   USER: YOUR_GITHUB_USERNAME  # replace this with your username
   EMAIL: YOUR_GITHUB_EMAIL    # replace this with your email
@@ -229,7 +222,7 @@ jobs:
           user_email: ${{ env.EMAIL }}
 ```
 
-At this point, we can run `yarn build` inside `my-app/doc`. When my-app is using TypeScript, however, the 
+At this point, we can run `yarn build` inside `my-app/doc`. When my-app is using TypeScript, however, the
 "Cannot find module error when importing an static file using typescript" error might occur. We deal with it by
 [creating a `.d.ts` file `src/my-app-env.d.ts`](https://github.com/parcel-bundler/parcel/issues/1445#issuecomment-392339363)
 and put :
