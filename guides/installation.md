@@ -129,7 +129,10 @@ async function main() {
     }
 }
 
-main().catch(console.error);
+main().catch((error) => {
+  console.log(error);
+  process.exit(1);
+});
 ```
 
 ### Integrating with Docusaurus
@@ -169,7 +172,10 @@ async function main() {
   app.generateJson(project, outputDir + "/documentation.json");
 }
 
-main().catch(console.error);
+main().catch((error) => {
+  console.log(error);
+  process.exit(1);
+});
 ```
 
 Since TypeDoc depends on my-apps tsconfig.json(`../tsconfig.json`), we need to run `npm install` in `my-app` directory
