@@ -328,6 +328,9 @@
 						"includeGroups": {
 							"type": "boolean"
 						},
+						"includeFolders": {
+							"type": "boolean"
+						},
 						"fullTree": {
 							"type": "boolean"
 						}
