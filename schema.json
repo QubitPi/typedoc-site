@@ -257,6 +257,11 @@
 			"type": "boolean",
 			"default": true
 		},
+		"sitemapBaseUrl": {
+			"description": "Specify a base URL to be used in generating a sitemap.xml in our output folder. If not specified, no sitemap will be generated.",
+			"type": "string",
+			"default": ""
+		},
 		"htmlLang": {
 			"description": "Sets the lang attribute in the generated html tag.",
 			"type": "string",
@@ -441,7 +446,9 @@
 				"@module",
 				"@inheritDoc",
 				"@group",
+				"@groupDescription",
 				"@category",
+				"@categoryDescription",
 				"@template",
 				"@type",
 				"@typedef",
@@ -487,6 +494,7 @@
 				"@virtual",
 				"@hidden",
 				"@ignore",
+				"@class",
 				"@enum",
 				"@event",
 				"@overload",
