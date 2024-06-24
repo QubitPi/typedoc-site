@@ -457,6 +457,11 @@
 				}
 			]
 		},
+		"suppressCommentWarningsInDeclarationFiles": {
+			"description": "Sets the language to be used in generation and in TypeDoc's messages",
+			"type": "boolean",
+			"default": false
+		},
 		"commentStyle": {
 			"description": "Determines how TypeDoc searches for comments",
 			"enum": [
