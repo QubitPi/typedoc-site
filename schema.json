@@ -516,6 +516,7 @@
 				"@property",
 				"@return",
 				"@satisfies",
+				"@since",
 				"@template",
 				"@type",
 				"@typedef"
