@@ -387,6 +387,9 @@
 						},
 						"includeFolders": {
 							"type": "boolean"
+						},
+						"compactFolders": {
+							"type": "boolean"
 						}
 					},
 					"additionalProperties": false
@@ -505,6 +508,9 @@
 				"@categoryDescription",
 				"@default",
 				"@document",
+				"@extends",
+				"@augments",
+				"@yields",
 				"@group",
 				"@groupDescription",
 				"@import",
