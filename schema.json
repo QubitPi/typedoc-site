@@ -210,6 +210,11 @@
 			"type": "string",
 			"default": ""
 		},
+		"customJs": {
+			"description": "Path to a custom JS file to import",
+			"type": "string",
+			"default": ""
+		},
 		"markdownItOptions": {
 			"description": "Specify the options passed to markdown-it, the Markdown parser used by TypeDoc",
 			"default": {
@@ -293,6 +298,11 @@
 			"description": "Specifies that source links should be treated as external links to be opened in a new tab",
 			"type": "boolean",
 			"default": false
+		},
+		"markdownLinkExternal": {
+			"description": "Specifies that http[s]:// links in comments and markdown files should be treated as external links to be opened in a new tab",
+			"type": "boolean",
+			"default": true
 		},
 		"githubPages": {
 			"description": "Generate a .nojekyll file to prevent 404 errors in GitHub Pages. Defaults to `true`",
@@ -389,6 +399,9 @@
 							"type": "boolean"
 						},
 						"compactFolders": {
+							"type": "boolean"
+						},
+						"excludeReferences": {
 							"type": "boolean"
 						}
 					},
@@ -560,6 +573,7 @@
 				"@readonly",
 				"@sealed",
 				"@virtual",
+				"@abstract",
 				"@class",
 				"@enum",
 				"@event",
