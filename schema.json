@@ -409,6 +409,26 @@
 				}
 			]
 		},
+		"headings": {
+			"description": "Determines which optional headings are rendered",
+			"anyOf": [
+				{
+					"type": "boolean"
+				},
+				{
+					"type": "object",
+					"properties": {
+						"readme": {
+							"type": "boolean"
+						},
+						"document": {
+							"type": "boolean"
+						}
+					},
+					"additionalProperties": false
+				}
+			]
+		},
 		"visibilityFilters": {
 			"description": "Specify the default visibility for builtin filters and additional filters according to modifier tags",
 			"default": {
